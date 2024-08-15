@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/login.css');
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/admin');
-    //eleventyConfig.addPassthroughCopy('./firebaseConfig.js');
+    eleventyConfig.addPassthroughCopy('./firebaseConfig.js');
 
     eleventyConfig.addFilter("postDate", (dateObj) => {
         return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED);

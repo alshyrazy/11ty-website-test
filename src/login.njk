@@ -54,7 +54,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = firebase.auth(app);
+//const auth = firebase.auth(app);
+const auth = getAuth(app);
 
     // Handle Sign Up
     document.getElementById('signInForm').addEventListener('submit', (event) => {
@@ -77,7 +78,7 @@ const auth = firebase.auth(app);
           document.getElementById('error-message').textContent = errorMessage;
         });
     });
- </script>
- 
+ </script> 
+  <!--<script src="/firebaseConfig.js"></script>-->
 </body>
 </html>

@@ -1,37 +1,75 @@
----
-title: example1
-layout: 'base.njk'
----
-      
-<section class="hero">
-  <div class="container flow">
-      <div class="hero__content flow">
-        <h1 class="section-title">Welcome to my blog!</h1>
-        <p>I use this space to document my adventures in front-end development, sharing how I’ve overcome issues I’ve run into, useful resources, and more.</p>
-        <p>Below are some of my favourite articles, or you can go to the blog page to see my most recent posts.</p>
-        <div class="flex-group">
-          <a href="#featured-articles" class="btn btn--primary">Featured articles</a>
-          <a href="./blog.html" class="btn btn--neutral">Most recent articles</a>
-        </div>
-      </div>
-      <div>
-        <img src="//unsplash.it/510" alt="" class="hero__image">
-      </div>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header.css">
+    <title>example1</title>
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
 
-<section id="featured-articles" class="featured-articles">
-  <div class="container flow">
-    <h2 class="section-title text-center ">Featured articles</h2>
-    <p class="text-center">Here is a sample of articles which I feel give you a good idea of what this site is all about.</p>
-    <ul role="list" class="articles__list flow">
-      {%- for post in collections.featured | reverse -%}
-        {% include 'article-snippet.njk' %}
-      {%- endfor %}
-    </ul>
-  </div>
-</section> 
+    
+    <header>
+        <div class="header_container">
+            <div class="logo_container">
+                <h1 class="logo"><span style="color: #3a86ff;">Res</span><span>Wab</span></h1>
+            </div>
+           
+                <div class="nav_container">
+                    <nav class="nav_bar">
+                        <ul>
+                           <li><a href="###">Researchers</a></li> 
+                           <li><a href="###">Courses</a></li> 
+                           <li><a href="###">Meets</a></li>
+                           <li><a href="###">Program</a></li> 
+                           <li><a href="###">Events</a></li> 
+                           <li><a href="###">About us
+
+                           </a></li>
+                           <li><span class="devider"></span></li>
+
+                        </ul>
+                    </nav>
+                </div>
+           
+            <div class="auth_btn_container">
+                <a href="login/" class="auth_btn sign_in">Sign in</a>
+                <a href="reg/" class="auth_btn sign_up">Sign up</a>
+            </div>
+            <div class="search_bar_container">
+                <div class="icon_container"><img src="/Icons/search.png" alt="menu" class="ic_search icon"></div>
+                <input type="search" class="search_bar" placeholder="Search with courses, researcher or research...">
+                <div class="icon_container"><img src="/Icons/menu.png" alt="menu" class="ic_menu icon"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+          
+<div>
+  This is Home
+</div>
  
    
-
  
+
+    </main>
+     <footer class="site-footer">
+
+  <p>© 2020 Company Name. All rights reserved.</p>
+</footer>
+
+    <script>
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", user => {
+            if (!user) {
+              window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+        }
+      </script>
+</body>
+</html>

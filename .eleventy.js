@@ -1,10 +1,10 @@
 const { DateTime } = require("luxon");
 module.exports = function(eleventyConfig) {
 
-    eleventyConfig.addPassthroughCopy('./src/style.css');
-    eleventyConfig.addPassthroughCopy('./src/login.css');
+    eleventyConfig.addPassthroughCopy('./src/css');
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/admin');
+    eleventyConfig.addPassthroughCopy('./src/Icons');
     eleventyConfig.addPassthroughCopy('./firebaseConfig.js');
 
     eleventyConfig.addFilter("postDate", (dateObj) => {

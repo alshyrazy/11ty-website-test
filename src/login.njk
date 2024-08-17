@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/login.css">
+<link rel="stylesheet" href="/css/login.css">
 <title>Login Form</title>
 
 </head>
@@ -24,7 +24,8 @@
             <input type="password" id="password" name="password" required>
         </div>
         <div class="form-group">
-            <button id="submit">Login</button>
+            <button id="submit" onclick="signin()">Login</button>
+            
         </div>
         <div class="forgot_password">
             <span> <a href="">forgot my password</a></span>
@@ -32,53 +33,10 @@
         <p id="error-message"></p>
     </form>
 </div>
- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
- <script>
-    // Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app";
-//import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-document.getElementById('test').style.color = 'red'
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
-  authDomain: "static-site-firebase.firebaseapp.com",
-  projectId: "static-site-firebase",
-  storageBucket: "static-site-firebase.appspot.com",
-  messagingSenderId: "94422243821",
-  appId: "1:94422243821:web:a274bee2c61bcd6bd6afe4"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-//const auth = firebase.auth(app);
-const auth = getAuth(app);
-
-    // Handle Sign Up
-    document.getElementById('signInForm').addEventListener('submit', (event) => {
-      event.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Successfully signed up
-          console.log('User signed up:', userCredential.user);
-          alert('Sign-up successful! You are now registered.');
-        })
-        .catch((error) => {
-          // Handle errors
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error('Error during sign-up:', errorCode, errorMessage);
-          document.getElementById('error-message').textContent = errorMessage;
-        });
-    });
- </script> 
-  <!--<script src="/firebaseConfig.js"></script>-->
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="/firebaseConfig.js"></script>
 </html>

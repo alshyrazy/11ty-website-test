@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{css}}">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <title>{{title}}</title>
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
-<body>
+<body style="height: fit-content;">
 
     {% include 'header.njk' %}
     <main>
@@ -25,6 +27,16 @@
             }
           });
         }
+      </script>
+      <script>
+        window.onscroll = function() {
+        var header = document.getElementById("header");
+        if (window.pageYOffset > 90) {
+        document.body.classList.add("scrolled");
+        } else {
+        document.body.classList.remove("scrolled");
+        }
+      };
       </script>
 </body>
 </html>

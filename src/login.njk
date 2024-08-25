@@ -10,31 +10,24 @@
 
 <body>
 <div class="container">
-    <div id="test">
-        hello
-    </div>
     <h2>Login</h2>
-    <form id="signInForm">
+
         <div class="form-group">
-            <div class="label"><label for="username">Email:</label></div>
-            <input type="email" id="email" name="email" required>
+           <div class="label"><label>Email:</label></div>
+            <input id="email" required>
         </div>
         <div class="form-group">
-            <div class="label"><label for="password">Password:</label></div>
-            <input type="password" id="password" name="password" required>
+            <div class="label"><label>Password:</label></div>
+            <input id="password" required>
         </div>
         <div class="form-group">
-            <button id="submit" onclick="signin()">Login</button>
+            <button id="submit" onclick="signIn()">Login</button>
             
         </div>
-        <div class="forgot_password">
-            <span> <a href="">forgot my password</a></span>
-        </div>
-        <p id="error-message"></p>
-    </form>
+       
+
 </div>
 </body>
-
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>

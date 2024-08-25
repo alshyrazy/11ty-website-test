@@ -1,0 +1,52 @@
+---
+layout: base.njk
+title: Home
+css: /css/style.css
+---
+<div class="space"></div>
+  <div class="wrapper">
+<main class="content">
+   
+ <div class="card-container">
+  <div class="card">
+  <img src="/Icons/search.png" alt="pic">
+  <h2>title</h2>
+  <p>discreption</p>
+</div>
+<div class="card">
+  <img src="/Icons/search.png" alt="pic">
+  <h2>title</h2>
+  <p>discreption</p>
+</div>
+<div class="card">
+  <img src="/Icons/search.png" alt="pic">
+  <h2>title</h2>
+  <p>discreption</p>
+</div>
+<div class="card">
+  <img src="/Icons/search.png" alt="pic">
+  <h2>title</h2>
+  <p>discreption</p>
+</div>
+<div class="card">
+  <img src="/Icons/search.png" alt="pic">
+  <h2>title</h2>
+  <p>discreption</p>
+</div>
+ </div>         
+<div>&#9776;</div>
+</main>
+
+</div>
+    <script>
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", user => {
+            if (!user) {
+              window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+        }
+      </script>
+

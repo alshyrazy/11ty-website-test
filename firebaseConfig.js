@@ -1,3 +1,11 @@
+const userName = document.getElementById('username');
+const firstName = document.getElementById('first-name');
+const secondName = document.getElementById('second-name');
+const birthDate = document.getElementById('birth-date');
+const address = document.getElementById('address');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+
 const firebaseConfig = firebase.initializeApp({
   apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
   authDomain: "static-site-firebase.firebaseapp.com",
@@ -7,55 +15,52 @@ const firebaseConfig = firebase.initializeApp({
   appId: "1:94422243821:web:a274bee2c61bcd6bd6afe4"
 });
 
-const auth = firebaseConfig.auth();
+const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
-/*const signin = () =>{
-   
-  const semail = document.getElementById('sign-in-email').value;
-  const spassword = document.getElementById('sign-in-password').value;
-  auth.signInWithEmailAndPassword(semail, spassword)
-  .then((res)=>{
-    
-    console.log(res.user)
-    window.location.href = '/index.html'
-  }).catch((err)=>{
-    alert(err.message)
-    console.log(err.code)
-    console.log(err.message)
-  })
 
-}*/
-
-const signup = () =>{
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    auth.createUserWithEmailAndPassword(email, password).then((userCredential) => {
-        console.log('User signed up:', userCredential.user);
-        window.location.href = '/index.html';
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error('Error during sign-up:', errorCode, errorMessage);
-        document.getElementById('error-message').textContent = errorMessage;
-      });
-  }
- 
-const signin =()=>{
+function signIn(){
   const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
- document.getElementById('test').style.color = 'red'
- db.collection('users')
- .add({
-  email: email,
-  password: password
- })
- .then( (docRef) => {
-  console.log("data id: ", docRef.id)
- })
- .catch((error) =>{
-  console.log(error)
- })
+ const password = document.getElementById('password').value;
+
+  authen.signInWithEmailAndPassword(email, password)
+  .then((res)=>{
+    console.log(res.user)
+    window.location.href = '/home/'
+  }).catch((err)=>{
+    console.log(err.code, err.message)
+  });
 }
 
-   
+
+function signUp() {
+  authen.createUserWithEmailAndPassword(email.value, password.value)
+  .then((userCredential) => {
+   const user = userCredential.user;
+  return db.collection("users").doc(user.uid).set({
+      username: "@"+userName.value,
+      firstname: firstName.value,
+     secondname: secondName.value,
+      birth: birthDate.value,
+      address: address.value,
+      email: email.value,
+      password: password.value,
+      uid: user.uid
+        });
+        })
+      .then(() => {
+       console.log('User signed up and information added to Firestore');
+       window.location.href = '/home/';
+      })
+      .catch((error) => {
+      console.error('Error during sign-up:', error.code, error.message);
+      });
+}
+     
+authen.onAuthStateChanged((user) => {
+  if (user) {
+    const uid = user.uid;
+
+   } else {
+    console.log("No user is signed in.");
+  }
+});

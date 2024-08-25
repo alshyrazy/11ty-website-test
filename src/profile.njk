@@ -1,0 +1,50 @@
+---
+layout: base.njk
+title: "profile"
+css: /css/profile.css
+---
+<div class="edit-container" id="popUp">
+    <div class="edit-content">
+        <div id="image-con"><img src="/Icons/facebook.png" alt="" id="edit-image"></div>
+        <div id="details">
+            <span id="edit-name">Name: <input type="text"></span>
+            <span id="edit-date">Date of birth <input type="text"></span>
+            <span id="edit-address">Address <input type="text"></span>
+            <span id="edit-residence">Residence <input type="text"></span>
+        </div>
+        <div id="button"><button>Done</button></div>
+    </div>
+</div>
+
+    <div class="space"></div>
+    <div class="profile-container">
+        <div class="meta-data-container">
+        <div class="image"><img id="ifinal-mage" src="/Icons/facebook.png" alt="profile"></div>
+        <div class="name" > <h2 id="final-name">Ahmed abduelmalik mohamed  </h2><span class="state"> Senior</span></div>
+        <div class="edit-image" id="editBtn"><img src="/Icons/edit.png" alt="Edit"></div>
+        </div>
+        <div class="details-container">
+            <div class="personal-details">
+                <h3>Personal info</h3>
+                <ul>
+                    <li>E-mail: <span>Ahmed@gmail.com</span></li>
+                    <li>character: <span></span></li>
+                    <li>Address: <span id="final-address"></span></li>
+                    <li>date of Birth: <span id="final-date"></span></li>
+                    <li>Place of residence: <span id="final-residence"></span></li>
+                </ul>
+            </div>
+            <div class="academic-details">
+                <h3>Courses</h3>
+                <ul>
+                    <li>Surgery</li>
+                    <li>Farma</li>
+                    <li>Imberiology</li>
+                    <li>Anatome</li>
+                    <li>Anatome</li>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script  src="/profile.js"></script>

@@ -3,34 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>example1</title>
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
-<body>
 
-    
-    <header>
+<body style="height: fit-content;">
+  <div class="wrapper">
+
+  <header id="header" >
         <div class="header_container">
             <div class="logo_container">
-                <h1 class="logo"><span style="color: #3a86ff;">Res</span><span>Wab</span></h1>
+                <a href="/"><h1 class="logo"><span style="color: #3a86ff;">Res</span><span>Wab</span></h1></a>
             </div>
            
                 <div class="nav_container">
-                    <nav class="nav_bar">
-                        <ul>
-                           <li><a href="###">Researchers</a></li> 
-                           <li><a href="###">Courses</a></li> 
-                           <li><a href="###">Meets</a></li>
-                           <li><a href="###">Program</a></li> 
-                           <li><a href="###">Events</a></li> 
-                           <li><a href="###">About us
 
-                           </a></li>
-                           <li><span class="devider"></span></li>
-
-                        </ul>
-                    </nav>
                 </div>
            
             <div class="auth_btn_container">
@@ -43,33 +33,31 @@
                 <div class="icon_container"><img src="/Icons/menu.png" alt="menu" class="ic_menu icon"></div>
             </div>
         </div>
-    </header>
+  </header>
+<div class="space"></div>
+<main class="content">
+   <h1 id="test"> Hello </h1>
+</main>
 
-    <main>
-          
-<div>
-  This is Home
-</div>
- 
-   
- 
-
-    </main>
-     <footer class="site-footer">
-
-  <p>© 2020 Company Name. All rights reserved.</p>
+<footer >
+ <div class="icons-container">
+  <a href=""><img src="/Icons/facebook.png" alt="fb"></a>
+  <a href=""><img src="/Icons/twitter.png" alt="fb"></a>
+  <a href=""><img src="/Icons/gmail.png" alt="fb"></a>
+  <a href=""><img src="/Icons/telegram.png" alt="fb"></a>
+ </div>
+ <hr>
+ <div class="terms">
+  <span>Terms of Service |</span>
+  <span> Privacy Policy </span>
+ </div>
+ <div class="rights">
+  <p>&copy; <span id="year"></span> All rights reserved. 2024</p>
+ </div>
 </footer>
 
-    <script>
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", user => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          });
-        }
-      </script>
+</div>
+
+      <script src="index.js"></script>
 </body>
 </html>

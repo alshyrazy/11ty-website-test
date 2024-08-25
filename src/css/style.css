@@ -1,0 +1,45 @@
+
+.space{
+  height: 150px;
+}
+.wrapper{
+   position: relative;
+  display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100%;
+}
+.content{
+ 
+  flex: 1; 
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.card-container{
+  margin-top: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card{
+  
+  border-radius: 8px;
+  font-family: arial, sans-serif;
+  display: inline-block;
+  width: 200px;
+  height: 260px;
+  text-align: center;
+  margin:20px;
+  box-shadow: 2px 2px 5px 0px hsl(0, 0%, 0%) ;
+}
+.card:hover{
+  cursor: pointer; 
+  transform: scale(1.03);
+}
+.card img{
+  width:50%;
+}
+
+
+

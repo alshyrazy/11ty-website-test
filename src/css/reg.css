@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.strict{
+    color: rgba(255, 0, 0, 0.897);
+}
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% repeat(5, 16%) 10%; 
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    
+}
+.container div {
+  
+    
+}
+.container .title{
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    display: grid;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+}
+.container .details{
+    display: grid;
+    align-items: center;
+    margin: 10px 10px;
+    height: 100%;
+    padding: 12px;
+}
+
+.container label{
+display: inline-block;
+font-weight: 500;
+margin-left: 5px;
+}
+.container input{
+height: 80%;
+width: 80%;
+border-radius: 12px;
+border: 1px solid rgba(0, 0, 0, 0.911);
+font-size: medium;
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+font-style: normal;
+
+}
+.container input:focus{
+    border: none;
+}
+
+.container .btn{
+    height: 100%;
+    grid-column: 1/-1;
+    grid-row: 6/-1;
+    margin-left: 20px;
+    display: grid;
+    
+    column-gap: 10px;
+    align-items: center;
+    
+}
+.container .btn button{
+    width: 60%;
+    padding: 10px 80px;
+    border: none;
+    border-radius: 16px;
+    margin-top: 20px ;
+    background-color: rgb(0, 94, 201);
+    font-family: "Robot", sans-serif;
+    color: white;
+    font-weight: 500;
+}
+

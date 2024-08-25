@@ -1,0 +1,35 @@
+footer{
+    background-color: rgb(14, 14, 14);
+    position: relative;
+    
+}
+.icons-container{
+    text-align: center;
+    margin: 40px;
+}
+.icons-container img{
+    width: 40px;
+    padding: 10px;
+}
+.icons-container img:hover{
+    transform: scale(1.1);
+}
+.terms{
+    margin: 16px;
+    color: rgb(212, 212, 212);
+    font-family: arial, sans-serif;
+    font-size: small;
+}
+.terms span:hover{
+    cursor: pointer;
+    color: rgb(103, 199, 255);
+}
+footer hr{
+    margin: 20px;
+}
+.rights{
+    text-align: center;
+    font-family: arial, sans-serif;
+    font-size: small;
+    color: rgb(212, 212, 212);
+}

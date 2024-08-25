@@ -1,0 +1,109 @@
+:root{
+    --border: 1px solid black;
+}
+
+.space{
+    height: 150px;
+}
+.main-container ul li{
+    margin-bottom: 50px;
+}
+.project-snippet{
+ display: grid;
+ grid-template-columns: 70% 30%;
+ grid-template-rows: 20% 20% 40% 20%;
+ height:260px;
+ width: 70%;
+
+ border-radius: 16px;
+ padding: 10px;
+ box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.589) ;
+}
+.project-snippet div{
+   
+}
+
+/* === title ===*/
+.project-snippet .title{
+    grid-column: 1/2; 
+}
+.project-snippet .title h2{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+}
+
+/* === meta-data ===*/
+.project-snippet .meta-data{
+    grid-column: 1/2;
+}
+.project-snippet .meta-data p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    margin-left: 10px;
+    line-height: 50px;
+}
+.project-snippet .meta-data p span{
+    color: rgb(0, 184, 31);
+}
+
+/* === description === */
+.project-snippet .description{
+    grid-column: 1/2;
+    overflow: hidden;
+}
+.project-snippet .description p{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+
+}
+
+/* === deadline === */
+.project-snippet .deadline{
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+.project-snippet .deadline p{
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    margin-left: 10px;
+    
+}
+.project-snippet .deadline p span{
+    color: rgb(0, 184, 31);
+}
+.project-snippet .deadline .status{
+    margin-left: 100px;
+    color: rgb(0, 184, 31);
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.project-snippet .deadline button{
+    background-color: rgb(0, 184, 31);
+    color: white;
+    width: 80px;
+    height: fit-content;
+    padding: 10px;
+    margin-left: 100px;
+    border: none;
+    border-radius: 18px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.project-snippet .deadline button:hover{
+    cursor: pointer;
+
+}
+/* === image === */
+.project-snippet .image{
+    grid-column: 2/-1;
+    grid-row: 1/5;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.project-snippet .image img{
+    width:240px;
+   border-radius: 8px;
+}

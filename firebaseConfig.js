@@ -5,6 +5,15 @@ const birthDate = document.getElementById('birth-date');
 const address = document.getElementById('address');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+const country = document.getElementById('country');
+
+/*const countries = ["Afghanistan", "Albania", "Algeria", "Zimbabwe"];
+        countries.forEach(item => {
+            let option = document.createElement('option');
+            option.value = item;
+            option.textContent = item;
+            country.appendChild(option);
+        });*/
 
 const firebaseConfig = firebase.initializeApp({
   apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
@@ -39,17 +48,18 @@ function signUp() {
   return db.collection("users").doc(user.uid).set({
       username: "@"+userName.value,
       firstname: firstName.value,
-     secondname: secondName.value,
+      secondname: secondName.value,
       birth: birthDate.value,
       address: address.value,
       email: email.value,
       password: password.value,
-      uid: user.uid
+      uid: user.uid,
+      country: country.value
         });
         })
       .then(() => {
        console.log('User signed up and information added to Firestore');
-       window.location.href = '/home/';
+       window.location.href = '/login/';
       })
       .catch((error) => {
       console.error('Error during sign-up:', error.code, error.message);

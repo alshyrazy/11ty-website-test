@@ -19,19 +19,20 @@ css: /css/profile.css
     <div class="space"></div>
     <div class="profile-container">
         <div class="meta-data-container">
-        <div class="image"><img id="ifinal-mage" src="/Icons/facebook.png" alt="profile"></div>
-        <div class="name" > <h2 id="final-name">Ahmed abduelmalik mohamed  </h2><span class="state"> Senior</span></div>
+        <div class="image"><img id="mage" src="/Icons/facebook.png" alt="profile"></div>
+        <div class="name" > <h2 id="name">Ahmed abduelmalik mohamed  </h2><span class="state"> Senior</span></div>
         <div class="edit-image" id="editBtn"><img src="/Icons/edit.png" alt="Edit"></div>
         </div>
+
         <div class="details-container">
             <div class="personal-details">
                 <h3>Personal info</h3>
                 <ul>
-                    <li>E-mail: <span>Ahmed@gmail.com</span></li>
-                    <li>character: <span></span></li>
-                    <li>Address: <span id="final-address"></span></li>
-                    <li>date of Birth: <span id="final-date"></span></li>
-                    <li>Place of residence: <span id="final-residence"></span></li>
+                    <li>E-mail: <span id="email">Ahmed@gmail.com</span></li>
+                    <li>Country: <span></span></li>
+                    <li>Address: <span id="address"></span></li>
+                    <li>Birth date: <span id="date"></span></li>
+                    <li>Country: <span id="residence"></span></li>
                 </ul>
             </div>
             <div class="academic-details">
@@ -47,4 +48,7 @@ css: /css/profile.css
             </div>
         </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script  src="/profile.js"></script>

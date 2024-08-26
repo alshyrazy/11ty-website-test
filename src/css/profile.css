@@ -83,10 +83,12 @@ line-height: 80px;
 }
 .details-container .personal-details ul{
     list-style-type: none;
-    
+}
+.details-container .personal-details ul li span{
+    color: #797979;
 }
 .details-container  li{
-    margin: 8px;
+    margin: 12px;
     font-family: system-ui;
 }
 .details-container .academic-details{

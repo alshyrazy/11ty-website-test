@@ -8,13 +8,36 @@
     <link rel="stylesheet" href="/css/footer.css">
     <title>{{title}}</title>
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
-<body style="height: fit-content;">
 
+    <style>
+      html, body {
+        height: fit-content;
+        overflow: auto;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        margin: 0px;
+      }
+
+      html::-webkit-scrollbar, body::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari, and Opera */
+      }
+      .base-wrapper{
+   position: relative;
+   display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100%;
+   
+}
+    </style>
+    
+</head>
+<body >
+  <div class="base-wrapper">
     {% include 'header.njk' %}
-    <main>
+    
     {{ content | safe }}
-    </main>
+   
     {% include 'footer.njk' %}
 
     <script>
@@ -38,5 +61,6 @@
         }
       };
       </script>
+  </div>
 </body>
 </html>

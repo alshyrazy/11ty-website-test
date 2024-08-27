@@ -7,12 +7,19 @@ css: /css/profile.css
     <div class="edit-content">
         <div id="image-con"><img src="/Icons/facebook.png" alt="" id="edit-image"></div>
         <div id="details">
-            <span id="edit-name">Name: <input type="text"></span>
-            <span id="edit-date">Date of birth <input type="text"></span>
-            <span id="edit-address">Address <input type="text"></span>
-            <span id="edit-residence">Residence <input type="text"></span>
+            <div><label for="name">Name:</label>
+            <input id="edit-name" type="text"></div>
+
+            <div><label for="date">Birth date</label>
+            <input id="edit-date" type="date"></div>
+
+            <div><label for="address">Address</label>
+            <input id="edit-address" type="text"></div>
+
+            <div><label for="residence">Residence</label>
+            <input id="edit-residence" type="text"></div>
         </div>
-        <div id="button"><button>Done</button></div>
+        <div id="edit-button" onclick="edit()"><button>Done</button></div>
     </div>
 </div>
 
@@ -20,7 +27,7 @@ css: /css/profile.css
     <div class="profile-container">
         <div class="meta-data-container">
         <div class="image"><img id="mage" src="/Icons/facebook.png" alt="profile"></div>
-        <div class="name" > <h2 id="name">Ahmed abduelmalik mohamed  </h2><span class="state"> Senior</span></div>
+        <div class="name" > <h2 id="name"></h2><span class="state"> Senior</span></div>
         <div class="edit-image" id="editBtn"><img src="/Icons/edit.png" alt="Edit"></div>
         </div>
 
@@ -28,8 +35,8 @@ css: /css/profile.css
             <div class="personal-details">
                 <h3>Personal info</h3>
                 <ul>
-                    <li>E-mail: <span id="email">Ahmed@gmail.com</span></li>
-                    <li>Country: <span></span></li>
+                    <li>E-mail: <span id="email"></span></li>
+                    <li>Specialize: <span id="specialization"></span></li>
                     <li>Address: <span id="address"></span></li>
                     <li>Birth date: <span id="date"></span></li>
                     <li>Country: <span id="residence"></span></li>

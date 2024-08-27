@@ -1,12 +1,14 @@
 
 const editImgBtn = document.getElementById('editBtn');
 const popContainer = document.getElementById('popUp');
+let ID = 0;
 
 const editImage = document.getElementById('edit-image');
 const editName = document.getElementById('edit-name');
 const editDate = document.getElementById('edit-date');
 const editAddress = document.getElementById('edit-address');
 const editResidence = document.getElementById('edit-residence');
+const editButton = document.getElementById('edit-button');
 
 const image = document.getElementById('image');
 const name = document.getElementById('name');
@@ -14,9 +16,15 @@ const date = document.getElementById('date');
 const address = document.getElementById('address');
 const residence = document.getElementById('residence');
 const email = document.getElementById('email');
+const specialization = document.getElementById('specialization');
+
 
 editImgBtn.onclick = function(){
     popContainer.style.display = "block";
+    editName.value = name.innerText;
+    editDate.value = date.innerText;
+    editAddress.value = address.innerText;
+    editResidence.value = residence.innerText
 }
 window.onclick = function(event){
     if (event.target == popContainer) {
@@ -37,16 +45,17 @@ const firebaseConfig = firebase.initializeApp({
 
   authen.onAuthStateChanged((user) => {
     if (user) {
-      const uid = user.uid;
-      db.collection('users').doc(uid).get().then((doc) => {
+      ID = user.uid;
+      db.collection('users').doc(ID).get().then((doc) => {
         if (doc.exists) {
           const userData = doc.data();
 
-          name.innerText = userData.firstname +' '+ userData.secondname;
+          name.innerText = userData.fullname;
           date.innerText = userData.birth;
           address.innerText = userData.address;
           residence.innerText = userData.country;
           email.innerText = userData.email;
+          specialization.innerText = userData.specialize;
 
         } else {
           console.log("No such document!");
@@ -58,3 +67,20 @@ const firebaseConfig = firebase.initializeApp({
       console.log("No user is signed in.");
     }
   });
+
+function edit(){
+
+  db.collection("users").doc(ID).update({
+    fullname: editName.value,
+      })
+    .then(() => {
+     console.log('Information updated');
+     popContainer.style.display = "none";
+     location.reload();
+    })
+    .catch((error) => {
+    console.error('Error during update:', error.code, error.message);
+    });
+    //
+    //
+}

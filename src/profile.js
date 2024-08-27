@@ -72,6 +72,9 @@ function edit(){
 
   db.collection("users").doc(ID).update({
     fullname: editName.value,
+    birth: editDate.value,
+    address: editAddress.value,
+    country: editResidence.value
       })
     .then(() => {
      console.log('Information updated');

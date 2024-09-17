@@ -1,0 +1,36 @@
+.container{
+    height: 100vh;
+}
+
+.sidebar {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #111;
+    color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.content {
+    margin-left: 0;
+    transition: margin-left 0.5s;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.content.full-width {
+    margin-left: 0;
+}
+
+.content.with-sidebar {
+    margin-left: 300px;
+}

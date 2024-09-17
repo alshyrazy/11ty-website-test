@@ -3,6 +3,10 @@ const editImgBtn = document.getElementById('editBtn');
 const popContainer = document.getElementById('popUp');
 let ID = 0;
 
+/*const confirmImg = document.getElementById('confirmImg');
+const proImage = document.getElementById('proImage');
+const closeBtn = document.getElementById('closeBtn')*/
+
 const editImage = document.getElementById('edit-image');
 const editName = document.getElementById('edit-name');
 const editDate = document.getElementById('edit-date');
@@ -29,8 +33,20 @@ editImgBtn.onclick = function(){
 window.onclick = function(event){
     if (event.target == popContainer) {
         popContainer.style.display = "none";
+    } 
+    else if(event.target == confirmImg){
+      confirmImg.style.display = "none";
     }
+    
 }
+
+/*proImage.onclick = function(){
+
+  confirmImg.style.display = "block";
+}
+closeBtn.onClick = function(){
+  confirmImg.style.display = "none";
+}*/
 
 const firebaseConfig = firebase.initializeApp({
     apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
@@ -86,4 +102,13 @@ function edit(){
     });
     //
     //
+}
+function signOutUser() {
+  authen.signOut().then(() => {
+    console.log("User signed out successfully.");
+    // Optionally, redirect to another page or show a message
+    window.location.href = '/index.html'; // Example: Redirect to sign-in page
+  }).catch((error) => {
+    console.error("Error signing out: ", error);
+  });
 }

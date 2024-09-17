@@ -7,17 +7,18 @@
 }
 .main-container ul li{
     margin-bottom: 50px;
+    list-style-type: none;
 }
 .project-snippet{
  display: grid;
  grid-template-columns: 70% 30%;
  grid-template-rows: 20% 20% 40% 20%;
- height:260px;
+ height:fit-content;
  width: 70%;
 
  border-radius: 16px;
  padding: 10px;
- box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.589) ;
+ box-shadow: 0 0 26px #6b6ec63a;
 }
 .project-snippet div{
    

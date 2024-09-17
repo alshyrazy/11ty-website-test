@@ -39,7 +39,7 @@ display: contents;
  width: 80%;
  border-radius: 16px;
  padding: 10px;
- box-shadow: 2px 2px 5px 0px hsl(0, 0%, 0%) ;
+ box-shadow: 0 0 26px #6b6ec646;
  margin: 20px;
 }
 .course-snippet div{

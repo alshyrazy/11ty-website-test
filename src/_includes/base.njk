@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
     <link rel="stylesheet" href="{{css}}">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <title>{{title}}</title>
     <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
+    
     <style>
       html, body {
         height: fit-content;
@@ -33,14 +34,48 @@
     
 </head>
 <body >
+  
   <div class="base-wrapper">
-    {% include 'header.njk' %}
     
+    <header>
+      <div class="header_container">
+          <div class="logo_container">
+              <a href="/home/"><h1 class="logo"><span style="color: #3a86ff;">Infy</span><span>Acad</span></h1></a>
+          </div>
+         
+              <div class="nav_container">
+                  <nav class="nav_bar">
+                      <ul>
+                         <li><a href="###">Researchers</a></li> 
+                         <li><a href="/courses/">Courses</a></li> 
+                         <li><a href="/module/">Meets</a></li>
+                         <li><a href="/projects/">Projects</a></li> 
+                         <li><a href="###">Events</a></li> 
+                         <li><a href="/about/">About us</a></li>
+                      </ul>
+                  </nav>
+              </div>
+         
+          <div class="auth_btn_container">
+             <!-- <a href="/login" class="auth_btn sign_in">Sign in</a>
+              <a href="reg.html" class="auth_btn sign_up">Sign up</a>-->
+              <a href="/profile/"><img src="/Icons/user.png" alt="profile" class="profile-image"></a>
+              <img src="/Icons/logout.png" alt="profile" class="logout-image" id="logoutBtn" onclick="signOutUser()">
+          </div>
+
+          <div class="search_bar_container">
+              <div class="icon_container"><img src="/Icons/search.png" alt="menu" class="ic_search icon"></div>
+              <input type="search" class="search_bar" placeholder="Search with courses, researcher or research...">
+              <div class="icon_container"><img src="/Icons/menu.png" alt="menu" class="ic_menu icon"></div>
+          </div>
+      </div>
+  </header>
+
     {{ content | safe }}
    
     {% include 'footer.njk' %}
-
-    <script>
+</div>
+      <script>
         if (window.netlifyIdentity) {
           window.netlifyIdentity.on("init", user => {
             if (!user) {
@@ -61,6 +96,9 @@
         }
       };
       </script>
-  </div>
+      <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+      <script src="/js/base.js"></script>
 </body>
 </html>

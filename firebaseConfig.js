@@ -49,9 +49,9 @@ function signUp() {
     email: email.value,
     password: password.value,
     uid: user.uid,
-    country: country.value
-
-        });
+    country: country.value,
+    Projects: []
+        }, {merge: true});
         })
       .then(() => {
        console.log('User signed up and information added to Firestore');

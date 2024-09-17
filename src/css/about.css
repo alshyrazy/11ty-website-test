@@ -1,0 +1,116 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+
+.container{
+    height: fit-content;
+    
+}
+.container .our-team-title{
+    margin-left: 6%;
+    font-family: "Roboto", system-ui;
+    color: rgb(2, 77, 13);
+    padding: 20px 0px;
+}
+.team-container{
+margin: 10px;
+text-align: center;
+
+}
+.team-container .member{
+    width: 180px;
+    height: fit-content;
+    display: inline-block;
+    text-align:center;
+    margin: 8px 8px;
+    padding: 14px;
+    box-shadow: 0 0 26px #6b6ec646;
+    border-radius: 16px;
+    line-height: 10px;
+}
+.team-container .member:hover {
+    cursor: pointer;
+}
+.member img{
+    width: 80%;
+    border-radius: 50%;
+}
+.member .position{
+    font-family: "SUSE", sans-serif;
+}
+.member .name{
+    font-family: "SUSE", sans-serif;
+}
+.member p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* == VISION == */
+.definition{
+    height: fit-content;
+    margin: 10px;
+    padding:10px 12%;
+}
+.definition .title{
+    font-family: "Roboto", system-ui;
+    color: rgb(2, 77, 13);
+}
+.definition .content{
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Roboto", system-ui;
+}
+.definition .content p{
+    margin-left: 30px;
+    line-height: 22px;
+}
+
+/* == GOALS ==*/
+.goals{
+    padding:10px 12%;
+    margin: 10px;
+}
+.goals .title{
+    font-family: "Roboto", system-ui;  
+    color: rgb(2, 77, 13);
+}
+.goals .content{
+    
+}
+.goals .content ul{
+    list-style-type: none;
+}
+.goals .content ul li{
+    font-family: "Roboto", system-ui;
+    margin: 16px 0px;
+}
+.goals .content ul li img{
+    display: inline-block;
+    width: 16px;
+    margin-right: 5px;
+}
+
+/* == ACTIVITYIES ==*/
+.activity{
+    padding:10px 12%;
+    
+    margin: 10px;
+}
+.activity .title{
+    font-family: "Roboto", system-ui;
+    color: rgb(2, 77, 13);  
+}
+.activity .content{
+    
+}
+.activity .content ul{
+    list-style-type: none;
+}
+.activity .content ul li{
+    font-family: "Roboto", system-ui;
+    margin: 20px 0px;
+}
+.activity .content ul li span{
+font-weight: 700;
+
+}

@@ -25,6 +25,7 @@
 .meta-data-container .image{
 text-align: center;
 width: fit-content;
+
 }
 
 .meta-data-container .edit-image{
@@ -36,7 +37,9 @@ direction: rtl;
 .meta-data-container .edit-image img:hover{
 cursor: pointer;
 }
-
+.meta-data-container img:hover{
+    cursor: pointer;
+    }
 .meta-data-container .name{
 line-height: 80px;
 }
@@ -50,9 +53,9 @@ line-height: 80px;
 .profile-container img{
     width: 90px;
     display: inline-block;
-    margin-top: 20px;
-    
+    margin-top: 20px;    
 }
+
 .profile-container .name{
     display: inline-block;
     margin: 10px;
@@ -77,7 +80,7 @@ line-height: 80px;
 .details-container .personal-details{
     text-align: left;
     border-radius: 10px;
-    box-shadow: 2px 2px 5px 0px hsl(0, 0%, 0%) ;
+    box-shadow: 0 0 26px #6b6ec646;
     height: 240px;
     display: inline-block;
     width: 45%;
@@ -100,7 +103,7 @@ line-height: 80px;
     text-align: left;
 
     border-radius: 10px;
-    box-shadow: 2px 2px 5px 0px hsl(0, 0%, 0%) ;
+    box-shadow: 0 0 26px #6b6ec646;
     height: 240px;
     display: inline-block;
     width: 45%;
@@ -120,6 +123,7 @@ line-height: 80px;
 .edit-container{
     display: none;
     background-color: rgba(0, 0, 0, 0.26);
+    
     width: 100%;
     height: 100%;
     position: fixed;
@@ -132,10 +136,10 @@ line-height: 80px;
     border-radius: 16px;
     margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: none;
     width: 80%; /* Could be more or less, depending on screen size */
     max-width: 500px; /* Max width for the content */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 26px #6b6ec646;
     height: 400px;
 }
 .edit-content #image-con{
@@ -205,3 +209,40 @@ font-family: Arial, Helvetica, sans-serif;
 .edit-content #button button:hover{
     background-color: #0162b3 ;
 }
+
+/* === Show === 
+.add-show-image{  
+    border-radius: 16px;
+    box-shadow: 0 0 26px #6b6ec646;
+    background-color: white;
+    width: 200px;
+    padding: 16px;
+    position: fixed;
+    top: 50%;
+    left: 10%;
+    direction: rtl;
+    display: none;
+}
+.add-show-image img{
+    width: 24px;
+    display: block;   
+}
+.add-show-image img:hover{
+    cursor: pointer;
+}
+.add-show-image button{ 
+    padding:8px 16px ;
+    border:none;
+    border-radius: 16px;
+    box-shadow: 0 0 26px #6b6ec63a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    margin: 10px;
+}
+.add-show-image button:hover{
+    cursor: pointer;
+}
+.add-show-image .show-btn{
+    background-color: #2e94e7;
+    color: white;
+}*/

@@ -16,8 +16,9 @@
     height: 260px;
     text-align: center;
     margin:20px;
-    box-shadow: 2px 2px 5px 0px hsl(0, 0%, 0%) ;
+    box-shadow: 0 0 26px #6b6ec646;
   }
+
   .card:hover{
     cursor: pointer; 
     transform: scale(1.03);

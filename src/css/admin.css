@@ -1,0 +1,268 @@
+body{
+    background-color: rgb(239, 240, 244);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+     padding: 0px 20px;
+}
+a{
+    text-decoration: none;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+.main-container{
+
+    width: 90%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    height: 100vh;
+    gap: 10px;
+}
+
+.side{
+   
+    width: 100%;
+    height: fit-content;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+    padding: 10px 0px;
+}
+.side h3{
+    margin-left: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(68, 68, 68);
+}
+.side ul{
+    list-style: none;
+    padding: 0px;
+}
+.side ul li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+    
+ }
+.side ul li:hover{
+   background-color: rgba(190, 244, 247, 0.418);
+   border-left: 2px solid rgba(43, 66, 201, 0.973);
+}
+.side ul li a{
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 8px 18px;
+    border-left: 2px solid rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.side .search{
+    margin-left: 12px;
+    width: 90%;
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius:5px ;
+    background-color:rgb(239, 240, 244);
+}
+
+.side .search input{
+    width: 100%;
+    border: none;
+    background-color:rgb(239, 240, 244);
+}
+
+.viwe-container{
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    align-items: center;  
+    padding: 0px 0px;
+}
+
+.view-header{
+    background-color: white;
+    border-radius: 8px;
+    height: 80px;
+    width: 90%; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.view-header .view-header-inner{
+   
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.view-header-inner h3{
+    font-size: 24px;
+    letter-spacing: 0.4px;
+    color: rgb(49, 61, 62);
+   
+}
+.view-header-inner a{
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 500;
+    background-color: rgb(49, 61, 62);
+    color: rgb(255, 255, 255);
+    padding: 0px 30px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.viwe-container .filter-elements{
+    height: 100px;
+}
+.viwe-container .list-container{
+    width: 90%;
+    height: 100%;
+   
+    
+}
+.list-container ul{
+    list-style: none;
+    padding: 0px;
+}
+.list-container ul li{
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-container ul li div{
+    padding: 5px 20px;
+}
+.list-container ul li div button{
+    border: 0px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    padding: 0px 20px;
+    font-size: 14px;
+    margin: 0px 4px;
+}
+.list-container ul li div .button1{
+    background-color: rgb(49, 61, 62);
+}
+.list-container ul li div .button2{
+    background-color: rgba(255, 23, 15, 0.774);
+}
+.list-container ul li a{
+    display: block;
+    max-width: 100%;
+    padding: 0px 12px;
+    color: rgb(49, 61, 62);
+}
+
+.active{
+    background-color: rgba(190, 244, 247, 0.418);
+    border-left: 2px solid rgba(43, 66, 201, 0.973);
+}
+
+.blocked{
+    background-color: black;
+}
+
+.add-project{
+    
+    height: fit-content;
+    width: 50%;
+    position: fixed;
+    top:20%;
+    left: 25%;
+    display: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(26, 28, 32, 0.733) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+}
+
+.add-project .add-project-container{
+    width: 80%;
+    height: fit-content;
+}
+
+.add-project .add-project-container div{
+    display: grid;
+    grid-template-columns: 20% 78%;
+}
+.add-project .add-project-container input{
+margin: 5px;
+padding: 5px;
+border: none;
+border-radius:5px ;
+background-color:rgb(239, 240, 244);
+}
+
+.add-project .add-project-container label{
+
+}
+
+.add-project .add-project-header{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+   
+    margin-bottom: 20px;
+}
+
+#add-project-done{
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 500;
+    background-color: rgb(49, 61, 62);
+    color: rgb(255, 255, 255);
+    padding: 5px 30px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#add-project-cancle{
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 500;
+    background-color: rgb(248, 55, 48);
+    color: rgb(255, 255, 255);
+    padding: 5px 20px;
+    font-size: 14px;
+    
+}
+

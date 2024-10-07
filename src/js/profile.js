@@ -22,6 +22,7 @@ const residence = document.getElementById('residence');
 const email = document.getElementById('email');
 const specialization = document.getElementById('specialization');
 
+const fileInput = document.getElementById('fileInput');
 
 editImgBtn.onclick = function(){
     popContainer.style.display = "block";
@@ -58,7 +59,8 @@ const firebaseConfig = firebase.initializeApp({
   });
   const authen = firebaseConfig.auth();
   const db = firebaseConfig.firestore();
-
+  const storage = firebaseConfig.storage();
+  
   authen.onAuthStateChanged((user) => {
     if (user) {
       ID = user.uid;
@@ -79,13 +81,14 @@ const firebaseConfig = firebase.initializeApp({
       }).catch((error) => {
         console.error("Error getting document:", error);
       });
+      set();
     } else {
       console.log("No user is signed in.");
     }
   });
 
 function edit(){
-
+  upload();
   db.collection("users").doc(ID).update({
     fullname: editName.value,
     birth: editDate.value,
@@ -95,7 +98,7 @@ function edit(){
     .then(() => {
      console.log('Information updated');
      popContainer.style.display = "none";
-     location.reload();
+     //location.reload();
     })
     .catch((error) => {
     console.error('Error during update:', error.code, error.message);
@@ -111,4 +114,52 @@ function signOutUser() {
   }).catch((error) => {
     console.error("Error signing out: ", error);
   });
+}
+
+function upload(){
+  
+  const file = fileInput.files[0];
+
+  if (file) {
+    // Create a storage reference
+    const storageRef = storage.ref('images/' + file.name);
+    const userId = authen.currentUser.uid;
+    const uploadTask = storageRef.child(`profile_pictures/${userId}/${file.name}`).put(file);
+
+    // Monitor the upload process
+    uploadTask.on('state_changed', 
+      (snapshot) => {
+        // Handle progress
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log(`Upload is ${progress}% done`);
+      }, 
+      (error) => {
+        // Handle unsuccessful uploads
+        console.error('Upload failed:', error);
+      }, 
+      () => {
+        // Handle successful uploads
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          // Save the file path (or URL) in Firestore
+          const userDocRef = db.collection('users').doc(userId);
+          userDocRef.set({
+            profilePicture: downloadURL
+          }, { merge: true });
+        });
+      }
+    );
+  } else {
+    alert('No file selected');
+  }
+}
+
+function set(){
+  const userDocRef = db.collection('users').doc(authen.currentUser.uid);
+  userDocRef.get().then((doc) => {
+  if (doc.exists) {
+    const profilePictureURL = doc.data().profilePicture;
+    document.getElementById('profileImage').src = profilePictureURL;
+  }
+});
+
 }

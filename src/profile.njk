@@ -5,7 +5,7 @@ css: /css/profile.css
 ---
 <div class="edit-container" id="popUp">
     <div class="edit-content">
-        <div id="image-con"><img src="/Icons/user.png" alt="" id="edit-image"></div>
+        <div id="image-con"><img src="/Icons/user.png" alt="" id="edit-image"><input id="fileInput" type="file"></div>
         <div id="details">
             <div><label for="name">Name:</label>
             <input id="edit-name" type="text"></div>
@@ -32,9 +32,10 @@ css: /css/profile.css
 
     <div id="mainContainer" class="profile-container">
         <div class="meta-data-container">
-        <div id="proImage" class="image"><img src="/Icons/user.png" alt="profile"></div>
+        <div id="proImage" class="image"><img id="profileImage" src="/Icons/user.png" alt="profile"></div>
         <div class="name" > <h2 id="name"></h2><span class="state"> Senior</span></div>
         <div class="edit-image" ><img id="editBtn" src="/Icons/edit.png" alt="Edit"></div>
+        
         </div>
 
         <div class="details-container">
@@ -64,4 +65,5 @@ css: /css/profile.css
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13/firebase-storage-compat.js"></script>
     <script  src="/js/profile.js"></script>

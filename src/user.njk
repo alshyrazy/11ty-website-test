@@ -1,0 +1,57 @@
+---
+layout: base.njk
+title: Abou Us
+css: /css/user.css
+---
+
+<div style="height: 150px;"></div>
+
+<div class="main-container">
+    <div class="inner-container">
+        <div class="personal-info">
+            <div class="personal-info-image"><img src="/Icons/user.png" alt="" id="user-image"></div>
+            <div class="personal-info-details">
+                <h2 id="user-name">Ahmed mohamed adam</h2> <span id="user-level">level</span>
+                <div class="personal-info-details-inner">
+                    <div class="personal-info-details-inner-left">
+                        <p>Email</p>
+                        <p>Address</p>
+                        <p>Special</p>
+                    </div>
+                    <div class="personal-info-details-inner-right">
+                        <p id="user-email"></p>
+                        <p id="user-address"></p>
+                        <p id="user-special"></p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="academic-info">
+            
+            <div class="academic-info-projects">
+                <h3>Projects</h3>
+                <p>project 1</p>
+                <p>project 2</p>
+                <p>project 3</p>
+            </div>
+            <div class="academic-info-courses">
+                <h3>Courses</h3>
+                <p>course 1</p>
+                <p>course 2</p>
+                <p>course 3</p>
+            </div>
+            <div class="academic-info-courses">
+                <h3>Achivments</h3>
+                <p>Badget 1</p>
+                <p>Complete Anatomy 2</p>
+                <p>course 3</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="/js/user.js"></script>

@@ -18,17 +18,10 @@ const createScene = () => {
         10, new BABYLON.Vector3(0,0,0), scene);
     camera.attachControl(canvas, true);
 
-    // Create a simple light
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0), scene);
 
-    // Create a box (cube)
     /*const box = BABYLON.MeshBuilder.CreateBox("box", { size: 2 }, scene);
-    const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 2, segments: 32 }, scene);
-    // Material for the cube
-    const material = new BABYLON.StandardMaterial("material", scene);
-    material.diffuseColor = new BABYLON.Color3(0, 1, 0);  // Green color
-    box.material = material;
-
+    
     // Animation for rotating the cube
     scene.registerBeforeRender(() => {
         box.rotation.x += 0.01;

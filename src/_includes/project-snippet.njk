@@ -1,0 +1,13 @@
+<li>
+    <div class="project-snippet project-card" data-project-id="123">
+        <div class="title"> <h2 id="title">{{ project.data.title }} | {{ project.data.special }}</h2></div>
+        <div class="image"><img src="/Icons/surgy.jpg" alt=""></div>
+        <div class="meta-data"><p>Posted on <span id="postDate">{{ project.data.date }}</span> By <span id="author">DR.{{project.data.author }}</span></p></div>
+        <div class="description"><p id="description">{{ project.data.discreption }}</p></div>
+        <div class="deadline">
+            <p>Deadline: <span id="deadlineDate" style="color: rgb(75, 75, 75);">{{ project.data.deadline }}</span></p>
+            <p class="status" id="state">Full</p>
+            <Button class="applyBtn" onclick="apply(123)" data-status="apply">Apply</Button>
+        </div>
+    </div>
+</li>

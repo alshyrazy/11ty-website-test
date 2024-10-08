@@ -1,141 +1,150 @@
 
 :root{
-    --border:1px black solid;
-}
-.space{
-    height: 150px;
-}
-.profile-container{
-   margin-top: 40px;
-   margin-bottom: 40px;
-    padding: 10px;
-    width:80% ;
+    --border:none;
 }
 
-/*===== META DATA CONTAINER =====*/
-.meta-data-container{
-
-    display: grid;
-    grid-template-columns:  100px auto auto; 
-   
-}
-.meta-data-container div{
-
-}
-.meta-data-container .image{
-text-align: center;
-width: fit-content;
-
+div{
+   border: var(--border);
 }
 
-.meta-data-container .edit-image{
-direction: rtl;
+.main-container{
+background-color: rgb(239, 240, 244);
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+"Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+padding: 0px 20px;
+height: fit-content;
+padding: 5px 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
-.meta-data-container .edit-image img{
-    width: 24px;
+
+.inner-container{
+height: fit-content;
+width: 90%;
+padding: 5px;
+display: flex;
+flex-direction: row;
 }
-.meta-data-container .edit-image img:hover{
-cursor: pointer;
+.inner-container div p{
+    margin-left: 10px;
 }
-.meta-data-container img:hover{
+.personal-info{
+    padding: 20px 50px;
+    margin-left: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+}
+#name{
+    display: inline;
+    margin-left: 20px;
+}
+#editBtn{
+    width: 20px;
+}
+#editBtn:hover{
     cursor: pointer;
-    }
-.meta-data-container .name{
-line-height: 80px;
+    width: 22px;
 }
-.meta-data-container .name h2{
-    display: inline-block;
-}
-.meta-data-container .name span{
-    font-size: medium;
-}
+.personal-info-image{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-.profile-container img{
+}
+.personal-info-image img{
     width: 90px;
-   
     border-radius: 50%;
-    display: inline-block;
-    margin-top: 20px;    
+}
+.personal-info-details{
+
 }
 
-.profile-container .name{
-    display: inline-block;
-    margin: 10px;
-    font-family: arial, sans-serif;
+.personal-info-details-inner{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
 }
-.profile-container .state{
-    color: rgb(0, 201, 27);
-    font-family: arial, sans-serif;
+.personal-info-details-inner-right p{
+    color: rgb(114, 114, 114);
+    font-weight: 500;
+    line-height: 16px;
+}
+.personal-info-details-inner-left p{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    line-height: 16px;
+}
+.academic-info{
+    margin-left: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 30px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+}
+.academic-info div{
+    width: 100%;
+    height: 100%;
 }
 
-/*===== DETAILS CONTAINER =====*/
-.details-container{
-  
-    border-radius: 14px;
-    height: 240px;;
-    padding: 10px;
-    text-align: center;
-}
-.details-container h3{
-    font-family: Arial, Helvetica, sans-serif;
-}
-.details-container .personal-details{
-    text-align: left;
-    border-radius: 10px;
-    box-shadow: 0 0 26px #6b6ec646;
-    height: 240px;
-    display: inline-block;
-    width: 45%;
-    font-family: "rubik";
-    font-weight: 600;
-    padding: 10px;
-    margin: 10px;
-}
-.details-container .personal-details ul{
-    list-style-type: none;
-}
-.details-container .personal-details ul li span{
-    color: #797979;
-}
-.details-container  li{
-    margin: 12px;
-    font-family: system-ui;
-}
-.details-container .academic-details{
-    text-align: left;
-
-    border-radius: 10px;
-    box-shadow: 0 0 26px #6b6ec646;
-    height: 240px;
-    display: inline-block;
-    width: 45%;
-    font-family: "rubik";
-    font-weight: 600;
-    padding: 10px;
-    margin: 10px;
-}
-.details-container .academic-details ul{
+ul{
     list-style-type: none;
 }
 
+ul li{
+    margin: 5px 0px;
 
+}
+ul li a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.achivments{
+    height: fit-content;
+    padding: 0px 50px;
+    margin: 0px 100px;
+    width: 82%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+}
 
 /* ==== Edit pop-up ==== */
 
 .edit-container{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     display: none;
     background-color: rgba(0, 0, 0, 0.26);
-    
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 1000;
 }
+
+.edit-container div{
+   
+}
 .edit-container .edit-content{
     background-color: white;
-    display: grid;
-    grid-template-rows: 30% 50% 20%;
-    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
     margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
     border: none;
@@ -145,32 +154,44 @@ line-height: 80px;
     height: 400px;
 }
 .edit-content #image-con{
-    display: grid;
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 .edit-content #edit-image {
     width: 20%;
+    border-radius:50% ;
 }
 .edit-content #details{
+ display: flex;
+ flex-direction: column;
  
+ margin-top: 20px;
    
+}
+.edit-content #details div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    height: fit-content;
 }
 .edit-content label{
     display: block;
     font-family: Arial, Helvetica, sans-serif;
 }
-.edit-content #details div{
-    margin: 10px 0px;
-   
-    height: 40px;
-}
+
 .edit-content #details input{
 height: 50%;
-border-radius: 8px;
+border-radius: 5px;
+border: none;
+background-color:rgb(221, 221, 221);
 width: 50%;
-border: 1px solid black;
-padding-left: 4px;
+font-size: 14px;
+padding: 5px 4px;
 font-family: Arial, Helvetica, sans-serif;
+}
+.edit-content #details input:focus{
+    outline: none;
 }
 .edit-content div{
     margin-left: 5%;
@@ -180,18 +201,36 @@ font-family: Arial, Helvetica, sans-serif;
     margin-top: 20px;
 }
 .edit-content #edit-button button{
-    width: 20%;
-    
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    background-color: #0681e6;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    border: 0px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 500;
+    background-color: rgb(49, 61, 62);
+    color: rgb(255, 255, 255);
+    padding: 0px 20px;
+    font-size: 14px;
+    text-decoration: none;
 }
 .edit-content #edit-button button:hover{
+    background-color: rgb(34, 42, 43);
+}
+#pick-btn{
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    background-color: #0278d8;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px;
+    background-color: rgb(61, 61, 61);
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    
 }
 .edit-content #button{
     display: grid;
@@ -213,6 +252,7 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 /* === Show === 
+
 .add-show-image{  
     border-radius: 16px;
     box-shadow: 0 0 26px #6b6ec646;
@@ -248,3 +288,42 @@ font-family: Arial, Helvetica, sans-serif;
     background-color: #2e94e7;
     color: white;
 }*/
+
+
+.profile-image-set{
+    display: flex;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    padding: 10px;
+    max-width: 200px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 26px #6b6ec646;
+    z-index: 1100;
+}
+.profile-image-set-inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.profile-image-set-inner div{
+    padding: 4px;
+    margin: 5px;
+}
+.profile-image-set-inner div img{
+    width: 40px;
+}
+.close-set-image-container{
+
+}
+.close-set-image-container img{
+    width: 20px;
+}
+.close-set-image-container img:hover{
+    cursor: pointer;
+}

@@ -27,8 +27,8 @@ if (userId) {
           
             document.getElementById('user-name').textContent = userData.fullname;
             document.getElementById('user-email').textContent = userData.email;
-            document.getElementById('user-special').textContent = userData.special;
-            document.getElementById('user-address').textContent = userData.adress
+            document.getElementById('user-special').textContent = userData.specialize;
+            document.getElementById('user-residence').textContent = userData.country
         } else {
             console.log('User does not exist!');
         }

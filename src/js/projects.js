@@ -13,7 +13,6 @@ const firebaseConfig = firebase.initializeApp({
 
   authen.onAuthStateChanged((user) => {
     if (user) {
-      
       const docRef = db.collection("users").doc(user.uid);
       docRef.get().then(doc => {
         const userData = doc.data();

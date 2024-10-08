@@ -60,7 +60,7 @@ li {
     align-items: center;
     padding: 8px 18px;
     border-left: 2px solid rgb(255, 255, 255);
-    font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 .side .search{
@@ -78,6 +78,9 @@ li {
     width: 100%;
     border: none;
     background-color:rgb(239, 240, 244);
+}
+.side .search input:focus{
+    outline: none;
 }
 
 .viwe-container{

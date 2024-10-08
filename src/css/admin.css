@@ -222,7 +222,7 @@ margin: 5px;
 padding: 5px;
 border: none;
 border-radius:5px ;
-background-color:rgb(239, 240, 244);
+background-color:rgb(211, 211, 211);
 }
 
 .add-project .add-project-container label{
@@ -239,7 +239,7 @@ background-color:rgb(239, 240, 244);
     margin-bottom: 20px;
 }
 
-#add-project-done{
+.add-project-done{
     border: 0px;
     border-radius: 5px;
     cursor: pointer;
@@ -254,7 +254,7 @@ background-color:rgb(239, 240, 244);
     text-decoration: none;
 }
 
-#add-project-cancle{
+.add-project-cancle{
     border: 0px;
     border-radius: 5px;
     cursor: pointer;

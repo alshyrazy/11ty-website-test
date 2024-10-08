@@ -44,7 +44,9 @@ flex-direction: row;
 margin-bottom: 10px;
 }
 .personal-info-image img{
-    width: 90px;
+    width: 100px;
+    background-color: #ff7b71e8;
+    border-radius: 50%;
 }
 .personal-info-details{
 

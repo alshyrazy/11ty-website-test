@@ -24,7 +24,7 @@ if (userId) {
         if (doc.exists) {
             
             const userData = doc.data();
-          
+            document.getElementById("user-image").src = userData.profilePicture;
             document.getElementById('user-name').textContent = userData.fullname;
             document.getElementById('user-email').textContent = userData.email;
             document.getElementById('user-special').textContent = userData.specialize;

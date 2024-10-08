@@ -29,7 +29,7 @@ const editAddress = document.getElementById('edit-address');
 const editResidence = document.getElementById('edit-residence');
 const editButton = document.getElementById('edit-button');
 
-const image = document.getElementById('image');
+const image = document.getElementById('user-image');
 const name = document.getElementById('name');
 const date = document.getElementById('date');
 const address = document.getElementById('address');
@@ -40,12 +40,14 @@ const specialization = document.getElementById('specialization');
 const fileInput = document.getElementById('fileInput');
 
 pickBtn.onclick = function(){
+  getImages();
   setImageContainer.style.display = "block";
 }
 closeSetImageBtn.onclick = function(){
   setImageContainer.style.display = "none";
 }
 editImgBtn.onclick = function(){
+    editImage.src = image.src;
     popContainer.style.display = "block";
     editName.value = name.innerText;
     editDate.value = date.value;
@@ -57,31 +59,23 @@ window.onclick = function(event){
         popContainer.style.display = "none";
     } 
     else if(event.target == confirmImg){
-      confirmImg.style.display = "none";
+      //confirmImg.style.display = "none";
     }
     //setImageContainer.style.display = "none"
 }
+ 
 
-const actualImage = document.getElementById("edit-image");
-const clickableImages = document.querySelectorAll(".profile-image-set-inner img");
-// Add click event listeners to each clickable image
-clickableImages.forEach((img) => {
-    img.addEventListener("click", function() {
-        // Set the src of the actual image to the src of the clicked image
-        actualImage.src = this.src;
-        setImageContainer.style.display = "none";
-    });
-});
-  
-
-  authen.onAuthStateChanged((user) => {
+authen.onAuthStateChanged((user) => {
     if (user) {
       ID = user.uid;
       displayProjects(ID);
       db.collection('users').doc(ID).get().then((doc) => {
         if (doc.exists) {
           const userData = doc.data();
-
+          
+            image.src = userData.profilePicture;
+          
+          
           name.innerText = userData.fullname;
           date.innerText = userData.birth;
           address.innerText = userData.address;
@@ -102,7 +96,7 @@ clickableImages.forEach((img) => {
   });
 
 function edit(){
-  upload();
+  
   db.collection("users").doc(ID).update({
     fullname: editName.value,
     birth: editDate.value,
@@ -112,7 +106,7 @@ function edit(){
     .then(() => {
      console.log('Information updated');
      popContainer.style.display = "none";
-     //location.reload();
+     location.reload();
     })
     .catch((error) => {
     console.error('Error during update:', error.code, error.message);
@@ -130,58 +124,17 @@ function signOutUser() {
   });
 }
 
-/*function upload(){
-  
-  const file = fileInput.files[0];
-
-  if (file) {
-    // Create a storage reference
-    const storageRef = storage.ref('images/' + file.name);
-    const userId = authen.currentUser.uid;
-    const uploadTask = storageRef.child(`profile_pictures/${userId}/${file.name}`).put(file);
-
-    // Monitor the upload process
-    uploadTask.on('state_changed', 
-      (snapshot) => {
-        // Handle progress
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(`Upload is ${progress}% done`);
-      }, 
-      (error) => {
-        // Handle unsuccessful uploads
-        console.error('Upload failed:', error);
-      }, 
-      () => {
-        // Handle successful uploads
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          // Save the file path (or URL) in Firestore
-          const userDocRef = db.collection('users').doc(userId);
-          userDocRef.set({
-            profilePicture: downloadURL
-          }, { merge: true });
-        });
-      }
-    );
-  } else {
-    alert('No file selected');
-  }
-}*/
-
-function upload(){
-  const refImage = document.getElementById("edit-image");
-  const actualImage = document.getElementById("user-image");
-
-  actualImage.setAttribute("src", refImage.src);
-}
-
-function set(){
-  const userDocRef = db.collection('users').doc(authen.currentUser.uid);
-  userDocRef.get().then((doc) => {
-  if (doc.exists) {
-    const profilePictureURL = doc.data().profilePicture;
-    document.getElementById('profileImage').src = profilePictureURL;
-  }
-});
+async function set(userId, imageSrc){
+ await db.collection("users").doc(userId).update({
+    profilePicture: imageSrc
+    })
+    .then(() => {
+     console.log('Picture updated');
+     
+    })
+    .catch((error) => {
+    console.error('Error during update:', error.code, error.message);
+    });
 
 }
 
@@ -378,4 +331,41 @@ async function displayAchivments(userId) {
   } catch (error) {
     console.error("Error retrieving projects: ", error);
   }*/
+}
+
+function getImages(){
+  const storageRef = storage.ref('profile images/');
+
+  // Get reference to the div where images will be displayed
+  const editImage = document.getElementById("edit-image");
+  const clickableImages = document.querySelectorAll(".profile-image-set-inner img");
+  const imageContainer = document.getElementById('profile-image-set-inner');
+  imageContainer.innerHTML = '';
+  // List all images in the "profile images" folder
+  storageRef.listAll().then((result) => {
+      result.items.forEach((imageRef) => {
+          // Get the URL for each image
+          imageRef.getDownloadURL().then((url) => {
+              // Create an img element and set its src attribute
+              const div = document.createElement("div");
+              const imgElement = document.createElement('img');
+              imgElement.src = url;
+
+              imgElement.addEventListener('click', function() {
+                editImage.src = this.src;
+                set(ID, this.src);
+                setImageContainer.style.display = "none";
+                console.log("clicked", this.src)
+              });
+
+              div.appendChild(imgElement);
+              imageContainer.appendChild(div);
+          }).catch((error) => {
+              console.error("Error fetching image URL:", error);
+          });
+      });
+  }).catch((error) => {
+      console.error("Error listing images:", error);
+  });
+
 }

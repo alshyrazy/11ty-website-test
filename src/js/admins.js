@@ -11,6 +11,8 @@ const db = firebaseConfig.firestore();
 
 let currentCancleClickListener = null;
 let currentDoneClickListener = null;
+let currentNewClickListener = null;
+let newHaveListener = false;
 let cancleHaveListener = false;
 let doneHaveListener = false;
 
@@ -18,11 +20,13 @@ const projectBtn = document.getElementById("project-btn");
 const researchtBtn = document.getElementById("research-btn");
 const memberBtn = document.getElementById("member-btn");
 const requestBtn = document.getElementById("request-btn");
+const eventBtn = document.getElementById("event-btn");
 
 const addBtn =  document.getElementById("add-btn");
 const addBtnTitle =  document.getElementById("add-btn-title");
 const collectionTitle = document.getElementById("collec-title");
 const addProjectMenu = document.getElementById("add-project-menu");
+const addEventMenu = document.getElementById("add-event-menu");
 const addProjectCancle = document.getElementById("add-project-cancle");
 const addProjectDone = document.getElementById("add-project-done");
 
@@ -30,6 +34,97 @@ projectBtn.onclick = function(){
     collectionTitle.innerText = "Projects"
     if(addBtn.style.display === "none"){
         addBtn.style.display = "block"
+    }
+    if(newHaveListener){
+        addBtn.removeEventListener('click', currentNewClickListener);
+        currentCancleClickListener = function (){
+            addProjectMenu.style.display = "block";
+            //Add eventListeners
+            if(cancleHaveListener){
+                addProjectCancle.removeEventListener('click', currentCancleClickListener);
+                currentCancleClickListener = function (){
+                    if(addProjectMenu.style.display === "block"){
+                        addProjectMenu.style.display = "none";
+                    }
+                    console.log("Cansle from new");
+                }
+                addProjectCancle.addEventListener('click', currentCancleClickListener);
+            } else{
+                currentCancleClickListener = function (){
+                    if(addProjectMenu.style.display === "block"){
+                        addProjectMenu.style.display = "none";
+                    }
+                    console.log("Cansle from new");
+                }
+                addProjectCancle.addEventListener('click', currentCancleClickListener);
+                cancleHaveListener = true;
+                //console.log("new listener Added");
+            }
+        
+            if(doneHaveListener){
+                addProjectDone.removeEventListener('click', currentDoneClickListener);
+                currentDoneClickListener = function (){
+                    addProject();
+                    //console.log("Done from new");
+                }
+                addProjectDone.addEventListener('click', currentDoneClickListener);
+            } else{
+                currentDoneClickListener = function (){
+                    addProject();
+                    //console.log("Done from new");
+                }
+                addProjectDone.addEventListener('click', currentDoneClickListener);
+               doneHaveListener = true;
+                //console.log("new done listener Added");
+            }
+        }
+        addBtn.addEventListener('click', currentCancleClickListener);
+    } else{
+        currentNewClickListener = function (){
+            addProjectMenu.style.display = "block";
+
+            //Add eventListeners
+            if(cancleHaveListener){
+                addProjectCancle.removeEventListener('click', currentCancleClickListener);
+                currentCancleClickListener = function (){
+                    if(addProjectMenu.style.display === "block"){
+                        addProjectMenu.style.display = "none";
+                    }
+                    //console.log("Cansle from new");
+                }
+                addProjectCancle.addEventListener('click', currentCancleClickListener);
+            } else{
+                currentCancleClickListener = function (){
+                    if(addProjectMenu.style.display === "block"){
+                        addProjectMenu.style.display = "none";
+                    }
+                    //console.log("Cansle from new");
+                }
+                addProjectCancle.addEventListener('click', currentCancleClickListener);
+                cancleHaveListener = true;
+                //console.log("new listener Added");
+            }
+        
+            if(doneHaveListener){
+                addProjectDone.removeEventListener('click', currentDoneClickListener);
+                currentDoneClickListener = function (){
+                    addProject();
+                    //console.log("Done from new");
+                }
+                addProjectDone.addEventListener('click', currentDoneClickListener);
+            } else{
+                currentDoneClickListener = function (){
+                    addProject();
+                    //console.log("Done from new");
+                }
+                addProjectDone.addEventListener('click', currentDoneClickListener);
+               doneHaveListener = true;
+                //console.log("new done listener Added");
+            }
+        }
+        addBtn.addEventListener('click', currentNewClickListener);
+        newHaveListener = true;
+        console.log(" set listener Added");
     }
     addBtnTitle.innerText = "Project"
     displayProjects();
@@ -52,7 +147,32 @@ requestBtn.onclick = function(){
     addBtn.style.display = "none"
     displayRequests();
 }
-addBtn.onclick = function(){
+eventBtn.onclick = function(){
+    collectionTitle.innerText = "Events"
+
+    if(addBtn.style.display === "none"){
+        addBtn.style.display = "block"
+    }
+    if(newHaveListener){
+        addBtn.removeEventListener('click', currentNewClickListener);
+        currentCancleClickListener = function (){
+            addEventMenu.style.display = "block";
+        }
+        addBtn.addEventListener('click', currentCancleClickListener);
+    } else{
+        currentNewClickListener = function (){
+            addEventMenu.style.display = "block";
+
+        }
+        addBtn.addEventListener('click', currentNewClickListener);
+        newHaveListener = true;
+        console.log(" set listener Added");
+    }
+    addBtnTitle.innerText = "event"
+    displayEvents();
+}
+
+/*addBtn.onclick = function(){
     addProjectMenu.style.display = "block";
 
     //Add eventListeners
@@ -93,7 +213,7 @@ addBtn.onclick = function(){
        doneHaveListener = true;
         //console.log("new done listener Added");
     }
-}
+}*/
 
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.li-btn');
@@ -145,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(addProjectMenu.style.display === "block"){
                         addProjectMenu.style.display = "none";
                     }
-                    //console.log("Cansle from set");
+                    console.log("Cansle from set");
                 }
                 addProjectCancle.addEventListener('click', currentCancleClickListener);
             } else{
@@ -153,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(addProjectMenu.style.display === "block"){
                         addProjectMenu.style.display = "none";
                     }
-                    //console.log("Cansle from set");
+                    console.log("Cansle from set");
                 }
                 addProjectCancle.addEventListener('click', currentCancleClickListener);
                 cancleHaveListener = true;
@@ -244,6 +364,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const h3 = document.createElement("h3");
         h3.textContent = project.name;  
+        a.appendChild(h3);
+        div.appendChild(btn1);
+        div.appendChild(btn2);
+        li.appendChild(a);
+        li.appendChild(div);
+
+        projectList.appendChild(li);
+      });
+      
+    } catch (error) {
+      console.error("Error retrieving projects: ", error);
+    }
+  }
+
+  async function displayEvents() {
+    try {
+
+      const querySnapshot = await db.collection("events").get();
+      
+      const projectList = document.getElementById("project-list");
+
+      projectList.innerHTML = '';
+
+      querySnapshot.forEach((doc) => {
+
+        const event = doc.data();
+        
+        const li = document.createElement("li");
+        const div = document.createElement("div");
+
+        //Edit button
+        const btn1 = document.createElement("button");
+        btn1.addEventListener('click', () =>{            
+   
+          })
+        btn1.classList.add("button1");
+        btn1.innerText = "Edit";
+        
+        // Delete button
+        const btn2 = document.createElement("button");
+        btn2.addEventListener('click', () =>{
+         
+          })
+        btn2.classList.add("button2");
+        btn2.innerText = "Delete";
+
+        const a = document.createElement("a");
+        a.href = "#";  
+
+        const h3 = document.createElement("h3");
+        h3.textContent = event.title;  
         a.appendChild(h3);
         div.appendChild(btn1);
         div.appendChild(btn2);

@@ -38,7 +38,7 @@ css: /css/profile.css
             <input id="edit-name" type="text"></div>
 
             <div><label for="date">Birth date</label>
-            <input id="edit-date" type="date"></div>
+            <input id="edit-date" type="date" required></div>
 
             <div><label for="address">Address</label>
             <input id="edit-address" type="text"></div>
@@ -51,20 +51,10 @@ css: /css/profile.css
 </div>
 <div class="profile-image-set" id="set-image-container">
     <div class="close-set-image-container"><img src="/Icons/close.png" id="close-set-image-btn" alt=""></div>
-    <div class="profile-image-set-inner">
-    <div><img src="/Icons/user.png" alt=""></div>
-    <div><img src="/Icons/edit.png" alt=""></div>
-    <div><img src="/Icons/facebook.png" alt=""></div>
-    <div><img src="/Icons/menu.png" alt=""></div>
-    <div><img src="/Icons/gmail.png" alt=""></div>
-    <div><img src="/Icons/soon.png" alt=""></div>
+    <div class="profile-image-set-inner" id="profile-image-set-inner">
+
 </div>
 </div>
-<!--<div id="confirmImg" class="add-show-image">
-    <img id="closeBtn" src="/Icons/close.png" alt="close">
-    <button class="upload-btn">Upload</button>
-    <button class="show-btn">Show</button>
-    </div> -->
 
     <div class="space" style="height: 200px;"></div>
 
@@ -76,7 +66,7 @@ css: /css/profile.css
                     <img src="/Icons/edit.png" alt="edit" id="editBtn">
                 </div>
                 <div class="personal-info-details">
-                    <h2 id="name"></h2> <span id="user-level">Senior</span>
+                    <h2 id="name"></h2> <span id="user-level"></span>
                     <div class="personal-info-details-inner">
                         <div class="personal-info-details-inner-left">
                             <p>Email</p>

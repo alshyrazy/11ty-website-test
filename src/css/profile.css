@@ -60,8 +60,12 @@ flex-direction: row;
 
 }
 .personal-info-image img{
-    width: 90px;
+    width: 100px;
     border-radius: 50%;
+   
+}
+#user-image{
+    background-color: #ff7b71e8;
 }
 .personal-info-details{
 
@@ -317,6 +321,9 @@ font-family: Arial, Helvetica, sans-serif;
 }
 .profile-image-set-inner div img{
     width: 40px;
+}
+.profile-image-set-inner div img:hover{
+    cursor: pointer;
 }
 .close-set-image-container{
 

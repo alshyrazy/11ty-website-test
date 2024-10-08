@@ -12,6 +12,19 @@ const firebaseConfig = firebase.initializeApp({
   const authen = firebaseConfig.auth();
   const db = firebaseConfig.firestore();
 
+ /* authen.onAuthStateChanged((user) => {
+    if(user){
+      const userId = user.uid;
+      const profileImage = document.getElementById("profile-image");
+      db.collection('users').doc(userId).get().then((doc) => {
+        if (doc.exists) {
+          console.log("founded")
+          const userData = doc.data();
+          profileImage.src = userData.profilePicture;
+        }});
+    }
+  });*/
+  
   function signOutUser() {
     authen.signOut().then(() => {
       console.log("User signed out successfully.");

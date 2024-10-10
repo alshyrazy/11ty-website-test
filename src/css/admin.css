@@ -118,6 +118,7 @@ li {
    
 }
 .view-header-inner a{
+    display: none;
     border: 0px;
     border-radius: 5px;
     cursor: pointer;

@@ -4,39 +4,38 @@ title: Home
 css: /css/home.css
 ---
 <div class="space"></div>
- 
- <div class="card-container">
-  <div class="card">
-  <img src="/Icons/search.png" alt="pic">
-  <h2>title</h2>
-  <p>discreption</p>
-</div>
-<div class="card">
-  <img src="/Icons/search.png" alt="pic">
-  <h2>title</h2>
-  <p>discreption</p>
-</div>
-<div class="card">
-  <img src="/Icons/search.png" alt="pic">
-  <h2>title</h2>
-  <p>discreption</p>
-</div>
-<div class="card">
-  <img src="/Icons/search.png" alt="pic">
-  <h2>title</h2>
-  <p>discreption</p>
-</div>
-<div class="card">
-  <img src="/Icons/search.png" alt="pic">
-  <h2>title</h2>
-  <p>discreption</p>
-</div>
- </div>         
 
-<h3>Events</h3>
-<div class="events"><img src="/Icons/soon.png" alt="" style="width: 100px;"></div>
-<h3>News</h3>
-<div class="news"><img src="/Icons/soon.png" alt="" style="width: 100px;"></div>
+<div class="background-container">
+  <dotlottie-player src="https://lottie.host/35c69bcb-7ba8-4a1f-b076-fcf663760b55/FD2l7AVA1T.json" 
+  background="transparent" speed="1" style="width: 1920; height: 1080; display: inline;" 
+  direction="1" playMode="normal" loop autoplay></dotlottie-player>
+</div>
+
+<div class="who-we-container">
+  <div class="who-we-title"><h3>Who we are</h3></div>
+  <div class="who-we-content"><p>
+    Lorem ipsum dolor sit amet consectetur 
+    adipisicing elit. Rem, dolores nam! Laboriosam, 
+    doloremque provident a eligendi facere quidem ea cumque 
+    fuga debitis nulla eos eius magni veritatis alias incidunt 
+    delectus praesentium aut, quisquam sapiente magnam? Molestias 
+    nihil amet voluptatem iusto maiores aliquam quia debitis inventore 
+    atque excepturi. Dolore amet error voluptatem atque, provident totam 
+    delectus, enim veniam rerum iste aut?
+  </p></div>
+</div>
+
+
+<div class="news-container">
+  <div class="news-title">
+    <h3>Waht's news</h3>
+  </div>
+  <div class="news-content">
+    <img src="/Icons/soon.png" alt="" style="width: 200px;">
+  </div>
+</div>
+
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <script>
         if (window.netlifyIdentity) {
           window.netlifyIdentity.on("init", user => {
@@ -47,5 +46,5 @@ css: /css/home.css
             }
           });
         }
-      </script>
+    </script>
 

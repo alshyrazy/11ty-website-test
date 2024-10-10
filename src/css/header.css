@@ -54,7 +54,10 @@ body{
 }
 .auth_btn_container .profile-image{
     width: 40px;
+    background-color: black;
+    border-radius: 50%;
     
+    height: auto;
 }
 .auth_btn_container .logout-image{
     width: 24px;

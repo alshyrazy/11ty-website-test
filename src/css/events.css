@@ -1,0 +1,43 @@
+.main-container{
+padding: 0px 50px;
+}
+.main-container div{
+    
+}
+.events-list{
+    list-style-type: none;
+    margin-bottom: 100px;
+}
+
+.events-list li{
+    margin-bottom: 40px;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    display: flex;
+    padding: 10px 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.event-snippet{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-title{
+    width: 100%;
+    height: fit-content;
+}
+.event-date{
+    width:98%;
+    height: fit-content;
+}
+
+.event-content{
+    width: 98%;
+    
+}

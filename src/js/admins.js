@@ -11,10 +11,13 @@ const db = firebaseConfig.firestore();
 
 let currentCancleClickListener = null;
 let currentDoneClickListener = null;
-let currentNewClickListener = null;
-let newHaveListener = false;
 let cancleHaveListener = false;
 let doneHaveListener = false;
+
+let currentEventCancleClickListener = null;
+let currentEventDoneClickListener = null;
+let eventCancleHaveListener = false;
+let eventDoneHaveListener = false;
 
 const projectBtn = document.getElementById("project-btn");
 const researchtBtn = document.getElementById("research-btn");
@@ -29,150 +32,58 @@ const addProjectMenu = document.getElementById("add-project-menu");
 const addEventMenu = document.getElementById("add-event-menu");
 const addProjectCancle = document.getElementById("add-project-cancle");
 const addProjectDone = document.getElementById("add-project-done");
+const addEventCancle = document.getElementById("add-event-cancle");
+const addEventDone = document.getElementById("add-event-done");
+const addEventBtn = document.getElementById("add-event-btn");
+const addResearchBtn = document.getElementById("add-research-btn");
+
 
 projectBtn.onclick = function(){
-    collectionTitle.innerText = "Projects"
-    if(addBtn.style.display === "none"){
-        addBtn.style.display = "block"
-    }
-    if(newHaveListener){
-        addBtn.removeEventListener('click', currentNewClickListener);
-        currentCancleClickListener = function (){
-            addProjectMenu.style.display = "block";
-            //Add eventListeners
-            if(cancleHaveListener){
-                addProjectCancle.removeEventListener('click', currentCancleClickListener);
-                currentCancleClickListener = function (){
-                    if(addProjectMenu.style.display === "block"){
-                        addProjectMenu.style.display = "none";
-                    }
-                    console.log("Cansle from new");
-                }
-                addProjectCancle.addEventListener('click', currentCancleClickListener);
-            } else{
-                currentCancleClickListener = function (){
-                    if(addProjectMenu.style.display === "block"){
-                        addProjectMenu.style.display = "none";
-                    }
-                    console.log("Cansle from new");
-                }
-                addProjectCancle.addEventListener('click', currentCancleClickListener);
-                cancleHaveListener = true;
-                //console.log("new listener Added");
-            }
-        
-            if(doneHaveListener){
-                addProjectDone.removeEventListener('click', currentDoneClickListener);
-                currentDoneClickListener = function (){
-                    addProject();
-                    //console.log("Done from new");
-                }
-                addProjectDone.addEventListener('click', currentDoneClickListener);
-            } else{
-                currentDoneClickListener = function (){
-                    addProject();
-                    //console.log("Done from new");
-                }
-                addProjectDone.addEventListener('click', currentDoneClickListener);
-               doneHaveListener = true;
-                //console.log("new done listener Added");
-            }
-        }
-        addBtn.addEventListener('click', currentCancleClickListener);
-    } else{
-        currentNewClickListener = function (){
-            addProjectMenu.style.display = "block";
 
-            //Add eventListeners
-            if(cancleHaveListener){
-                addProjectCancle.removeEventListener('click', currentCancleClickListener);
-                currentCancleClickListener = function (){
-                    if(addProjectMenu.style.display === "block"){
-                        addProjectMenu.style.display = "none";
-                    }
-                    //console.log("Cansle from new");
-                }
-                addProjectCancle.addEventListener('click', currentCancleClickListener);
-            } else{
-                currentCancleClickListener = function (){
-                    if(addProjectMenu.style.display === "block"){
-                        addProjectMenu.style.display = "none";
-                    }
-                    //console.log("Cansle from new");
-                }
-                addProjectCancle.addEventListener('click', currentCancleClickListener);
-                cancleHaveListener = true;
-                //console.log("new listener Added");
-            }
-        
-            if(doneHaveListener){
-                addProjectDone.removeEventListener('click', currentDoneClickListener);
-                currentDoneClickListener = function (){
-                    addProject();
-                    //console.log("Done from new");
-                }
-                addProjectDone.addEventListener('click', currentDoneClickListener);
-            } else{
-                currentDoneClickListener = function (){
-                    addProject();
-                    //console.log("Done from new");
-                }
-                addProjectDone.addEventListener('click', currentDoneClickListener);
-               doneHaveListener = true;
-                //console.log("new done listener Added");
-            }
-        }
-        addBtn.addEventListener('click', currentNewClickListener);
-        newHaveListener = true;
-        console.log(" set listener Added");
-    }
-    addBtnTitle.innerText = "Project"
+    collectionTitle.innerText = "Projects";
+
+    addResearchBtn.style.display = "none";
+    addEventBtn.style.display = "none";
+    addBtn.style.display = "block";
     displayProjects();
 }
 researchtBtn.onclick = function(){
-    collectionTitle.innerText = "Researches"
-    if(addBtn.style.display === "none"){
-        addBtn.style.display = "block"
-    }
-    addBtnTitle.innerText = "Research"
+    collectionTitle.innerText = "Researches";
+    addResearchBtn.style.display = "block";
+    addEventBtn.style.display = "none";
+    addBtn.style.display = "none";
+
+    
     displayResearches();
 }
 memberBtn.onclick = function(){
     document.getElementById("collec-title").innerText = "Members"
-    addBtn.style.display = "none"
+    
+    addResearchBtn.style.display = "none";
+    addEventBtn.style.display = "none";
+    addBtn.style.display = "none";
+
     displayUsers();
 }
 requestBtn.onclick = function(){
     document.getElementById("collec-title").innerText = "Requests";
-    addBtn.style.display = "none"
+    
+    addResearchBtn.style.display = "none";
+    addEventBtn.style.display = "none";
+    addBtn.style.display = "none";
+
     displayRequests();
 }
 eventBtn.onclick = function(){
     collectionTitle.innerText = "Events"
-
-    if(addBtn.style.display === "none"){
-        addBtn.style.display = "block"
-    }
-    if(newHaveListener){
-        addBtn.removeEventListener('click', currentNewClickListener);
-        currentCancleClickListener = function (){
-            addEventMenu.style.display = "block";
-        }
-        addBtn.addEventListener('click', currentCancleClickListener);
-    } else{
-        currentNewClickListener = function (){
-            addEventMenu.style.display = "block";
-
-        }
-        addBtn.addEventListener('click', currentNewClickListener);
-        newHaveListener = true;
-        console.log(" set listener Added");
-    }
-    addBtnTitle.innerText = "event"
+    addResearchBtn.style.display = "none"
+    addEventBtn.style.display = "block"
+    addBtn.style.display = "none"
+    
     displayEvents();
 }
 
-/*addBtn.onclick = function(){
+addBtn.onclick = function(){
     addProjectMenu.style.display = "block";
 
     //Add eventListeners
@@ -182,7 +93,7 @@ eventBtn.onclick = function(){
             if(addProjectMenu.style.display === "block"){
                 addProjectMenu.style.display = "none";
             }
-            //console.log("Cansle from new");
+            console.log("Cansle from proj");
         }
         addProjectCancle.addEventListener('click', currentCancleClickListener);
     } else{
@@ -190,30 +101,75 @@ eventBtn.onclick = function(){
             if(addProjectMenu.style.display === "block"){
                 addProjectMenu.style.display = "none";
             }
-            //console.log("Cansle from new");
+            console.log("Cansle from proj");
         }
         addProjectCancle.addEventListener('click', currentCancleClickListener);
         cancleHaveListener = true;
-        //console.log("new listener Added");
+        console.log("new listener Added to proj");
     }
 
     if(doneHaveListener){
         addProjectDone.removeEventListener('click', currentDoneClickListener);
         currentDoneClickListener = function (){
             addProject();
-            //console.log("Done from new");
+            console.log("Done from proj");
         }
         addProjectDone.addEventListener('click', currentDoneClickListener);
     } else{
         currentDoneClickListener = function (){
             addProject();
-            //console.log("Done from new");
+            console.log("Done from proj");
         }
         addProjectDone.addEventListener('click', currentDoneClickListener);
        doneHaveListener = true;
+        console.log("new done listener Added to proj");
+    }
+}
+addEventBtn.onclick = function(){
+    addEventMenu.style.display = "block";
+
+    //Add eventListeners
+    if(eventCancleHaveListener){
+        addEventCancle.removeEventListener('click', currentEventCancleClickListener);
+        currentEventCancleClickListener = function (){
+            if(addEventMenu.style.display === "block"){
+                addEventMenu.style.display = "none";
+            }
+            console.log("Cansle from new");
+        }
+        addEventCancle.addEventListener('click', currentEventCancleClickListener);
+    } else{
+        currentEventCancleClickListener = function (){
+            if(addEventMenu.style.display === "block"){
+                addEventMenu.style.display = "none";
+            }
+            console.log("Cansle from new");
+        }
+        addEventCancle.addEventListener('click', currentEventCancleClickListener);
+        eventCancleHaveListener = true;
+        console.log("new listener Added to event");
+    }
+
+    if(eventDoneHaveListener){
+        addEventDone.removeEventListener('click', currentEventDoneClickListener);
+        currentEventDoneClickListener = function (){
+            addEvent();
+            addEventMenu.style.display = "none";
+            console.log("Done from new");
+        }
+        addEventDone.addEventListener('click', currentEventDoneClickListener);
+    } else{
+        currentEventDoneClickListener = function (){
+            addEvent();
+            addEventMenu.style.display = "none";
+            console.log("Done from new");
+        }
+        addEventDone.addEventListener('click', currentEventDoneClickListener);
+       eventDoneHaveListener = true;
         //console.log("new done listener Added");
     }
-}*/
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.li-btn');
@@ -396,8 +352,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //Edit button
         const btn1 = document.createElement("button");
-        btn1.addEventListener('click', () =>{            
-   
+        btn1.addEventListener('click', () =>{ 
+
+            addEventMenu.style.display = "block";
+            document.getElementById("event-title").value = event.title;
+            document.getElementById("event-date").value = event.date      
+            document.getElementById("event-description").value = event.description;
+                     
+            if(eventCancleHaveListener){
+                addEventCancle.removeEventListener('click', currentEventCancleClickListener);
+                currentEventCancleClickListener = function (){
+                    if(addEventMenu.style.display === "block"){
+                        addEventMenu.style.display = "none";
+                    }
+                    console.log("Cansle from edit");
+                }
+                addEventCancle.addEventListener('click', currentEventCancleClickListener);
+            } else{
+                currentEventCancleClickListener = function (){
+                    if(addEventMenu.style.display === "block"){
+                        addEventMenu.style.display = "none";
+                    }
+                    console.log("Cansle from edit");
+                }
+                addEventCancle.addEventListener('click', currentEventCancleClickListener);
+                eventCancleHaveListener = true;
+                console.log("new listener Added to event");
+            }
+        
+            if(eventDoneHaveListener){
+                addEventDone.removeEventListener('click', currentEventDoneClickListener);
+                currentEventDoneClickListener = function (){
+                    updateEvent(doc.id);
+                    addEventMenu.style.display = "none";
+                    console.log("Done from edit");
+                }
+                addEventDone.addEventListener('click', currentEventDoneClickListener);
+            } else{
+                currentEventDoneClickListener = function (){
+                    updateEvent(doc.id);
+                    addEventMenu.style.display = "none";
+                    console.log("Done from edit");
+                }
+                addEventDone.addEventListener('click', currentEventDoneClickListener);
+               eventDoneHaveListener = true;
+                //console.log("new done listener Added");
+            }
           })
         btn1.classList.add("button1");
         btn1.innerText = "Edit";
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Delete button
         const btn2 = document.createElement("button");
         btn2.addEventListener('click', () =>{
-         
+            deleteEvent(doc.id);
           })
         btn2.classList.add("button2");
         btn2.innerText = "Delete";
@@ -676,4 +676,40 @@ async function blockUser(userId) {
     }
   }
   
+  async function addEvent() {
+    
+    await db.collection("events").add({
+        title: document.getElementById("event-title").value,
+        date: document.getElementById("event-date").value,           
+        description: document.getElementById("event-description").value
+    })
+    .then((docRef) => {
+        console.log("Project added with ID: ", docRef.id);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error adding project: ", error);
+    });
+}
+async function updateEvent(eventId){
 
+    await db.collection("events").doc(eventId).update({
+        title: document.getElementById("event-title").value,
+        date: document.getElementById("event-date").value,           
+        description: document.getElementById("event-description").value
+    })
+    .then((docRef) => {
+        console.log("Project updtaed with ID: ",eventId);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error updating project: ", error);
+    });
+}
+async function deleteEvent(eventId){
+    db.collection("events").doc(eventId).delete().then(() => {
+        console.log("Project successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing project: ", error);
+    });
+}

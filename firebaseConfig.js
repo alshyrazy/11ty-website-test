@@ -19,9 +19,24 @@ const firebaseConfig = firebase.initializeApp({
 const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
 
-const data ={
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+      const countrySelect = document.getElementById('country');
+      
+      // Sort countries alphabetically by name
+      data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+      
+      // Loop through each country and add an option to the select element
+      data.forEach(country => {
+        const option = document.createElement('option');
+        option.value = country.name.common;
+        option.textContent = country.name.common;
+        countrySelect.appendChild(option);
+      });
+    })
+    .catch(error => console.error('Error fetching country data:', error));
 
-}
 function signIn(){
   const email = document.getElementById('email').value;
  const password = document.getElementById('password').value;

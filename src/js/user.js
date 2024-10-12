@@ -35,6 +35,43 @@ if (userId) {
     }).catch((error) => {
         console.error('Error fetching user data:', error);
     });
+    displayProjects(userId);
 } else {
     console.log('No user ID provided in the URL');
+}
+
+async function displayProjects(userId) {
+    try {
+  
+      const querySnapshot = await db.collection("Projects").get();
+      
+      const projectList = document.getElementById("project-list");
+  
+      projectList.innerHTML = '';
+  
+      querySnapshot.forEach((doc) => {
+  
+        const project = doc.data();
+        const membersMap = project.members || {}
+        const projectId = doc.id;
+        if(membersMap.hasOwnProperty(userId)){
+          //console.log("founded");
+          const li = document.createElement("li");   
+  
+          const a = document.createElement("a");
+          a.href = "/projects/";  
+    
+          const spanTitle = document.createElement("span");
+          spanTitle.textContent = project.title;  
+    
+          a.appendChild(spanTitle);
+          li.appendChild(a);
+          projectList.appendChild(li);
+        }
+  
+      });
+      
+    } catch (error) {
+      console.error("Error retrieving projects: ", error);
+    }
 }

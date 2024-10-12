@@ -28,11 +28,11 @@ const firebaseConfig = firebase.initializeApp({
         if (userAcceptedProjects.includes(projectId)) {
           const project = projectsMap[projectId];
           if(project.status === "allow"){
-          button.textContent = "Open";  // Change text to "Open"
+          button.textContent = "Open"; 
           button.style.backgroundColor = "rgb(0, 163, 228)";  // Change color to green
           button.dataset.status = "open";  // Update data-status
           button.addEventListener('click', () =>{
-            window.location.href = '/space/';
+            window.location.href = project.link;
           })
         }else if(project.status === "pinned"){
           button.textContent = "Pinned";  // Change text to "Open"
@@ -50,10 +50,12 @@ const firebaseConfig = firebase.initializeApp({
 async function apply(projectId){
 const docRef = db.collection("users").doc(authen.currentUser.uid);
 let projectTitle;
+let projectLink;
 const projRef = db.collection("Projects").doc(projectId);
 projRef.get().then((doc) => {
     if (doc.exists) {
          projectTitle = doc.data().title;  // Access the title
+         projectLink = doc.data().link;
         console.log("Project title:", projectTitle);
     } else {
         console.log("No such document!");
@@ -77,7 +79,8 @@ await docRef.get().then((doc) => {
         projectsMap[projectId] = {
           projectName: projectTitle,
           count: 12,
-          status: "pinned"
+          status: "pinned",
+          link: projectLink
           // Add other project details as needed
         };
         db.collection("requests").add({

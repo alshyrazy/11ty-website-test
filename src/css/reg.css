@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0af;
     margin: 0;
     padding: 0;
     display: flex;
@@ -17,8 +17,9 @@ body {
     grid-template-rows: 10% repeat(5, 16%) 10%; 
     background-color: #ffffff;
     padding: 20px;
+    height: fit-content;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 26px #6b6ec646;
     width: 50%;
     
 }
@@ -52,8 +53,9 @@ margin-left: 5px;
 .container input{
 height: 80%;
 width: 80%;
-border-radius: 12px;
-border: 1px solid rgba(0, 0, 0, 0.911);
+border-radius: 5px;
+border: none;
+background-color:rgb(204, 204, 204);
 font-size: medium;
 font-family: "Roboto", sans-serif;
 font-size: 15px;
@@ -66,7 +68,8 @@ font-style: normal;
     height: 80%;
     width: 80%;
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.911);
+    border: none;
+    background-color:rgb(204, 204, 204);
     font-size: medium;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -74,7 +77,7 @@ font-style: normal;
     
     }
 .container input:focus{
-    border: none;
+    outline: none;
 }
 
 .container .btn{
@@ -102,4 +105,15 @@ font-style: normal;
 .container .btn button:hover{
     background-color: #0056b3;
     cursor: pointer;
+}
+
+.have-account{
+    
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+}
+.have-account a{
+    text-decoration: none;
 }

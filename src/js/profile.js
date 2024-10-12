@@ -47,12 +47,20 @@ closeSetImageBtn.onclick = function(){
   setImageContainer.style.display = "none";
 }
 editImgBtn.onclick = function(){
-    editImage.src = image.src;
+  /*let userData;
+  db.collection('users').doc(ID).get().then((doc) => {
+    console.log("user found")
+    if (doc.exists) {
+      userData = doc.data();
+    }
+    });*/
     popContainer.style.display = "block";
+
+    editImage.src = image.src;
     editName.value = name.innerText;
-    editDate.value = date.value;
+    editDate.value = date.innerText;
     editAddress.value = address.innerText;
-    editResidence.value = residence.innerText
+    editResidence.value = residence.innerText;
 }
 window.onclick = function(event){
     if (event.target == popContainer) {
@@ -93,7 +101,7 @@ authen.onAuthStateChanged((user) => {
     } else {
       console.log("No user is signed in.");
     }
-  });
+});
 
 function edit(){
   

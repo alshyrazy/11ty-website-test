@@ -214,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("project-deadline").value = project.deadline;
             document.getElementById("project-special").value = project.special;     
             document.getElementById("project-status").value = project.status;
+            document.getElementById("project-link").value = project.link;
             //Add eventListeners
             if(cancleHaveListener){
                 addProjectCancle.removeEventListener('click', currentCancleClickListener);
@@ -453,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn1 = document.createElement("button");
         btn1.addEventListener('click', () =>{
             
-            window.location.href = '/';
+            window.location.href = `/user?uid=${userId}`;
           })
         btn1.classList.add("button1");
         btn1.innerText = "View";
@@ -462,13 +463,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn2 = document.createElement("button");
         btn2.addEventListener('click', () =>{
             //window.location.href = '/space/';
+            
             blockUser(userId)
           })
         btn2.classList.add("button2");
         btn2.innerText = blockBtnText;
 
         const a = document.createElement("a");
-        a.href = `/user?uid=${userId}`;
+        //a.href = `/user?uid=${userId}`;
 
         const h3 = document.createElement("h3");
         h3.textContent = project.fullname;  
@@ -546,7 +548,8 @@ document.addEventListener('DOMContentLoaded', () => {
         description: document.getElementById("project-description").value,
         deadline:document.getElementById("project-deadline").value, 
         special: document.getElementById("project-special").value,     
-        status: document.getElementById("project-status").value  
+        status: document.getElementById("project-status").value,
+        link: document.getElementById("project-link").value
     })
     .then((docRef) => {
         console.log("Project added with ID: ", docRef.id);
@@ -566,7 +569,8 @@ async function updateProject(projectId){
         description: document.getElementById("project-description").value,
         deadline:document.getElementById("project-deadline").value, 
         special: document.getElementById("project-special").value,     
-        status: document.getElementById("project-status").value  
+        status: document.getElementById("project-status").value,
+        link: document.getElementById("project-link").value
     })
     .then((docRef) => {
         console.log("Project updtaed with ID: ",projectId);
@@ -579,6 +583,7 @@ async function updateProject(projectId){
 async function deleteProject(projectId){
     db.collection("Projects").doc(projectId).delete().then(() => {
         console.log("Project successfully deleted!");
+        displayProjects()
     }).catch((error) => {
         console.error("Error removing project: ", error);
     });
@@ -600,6 +605,7 @@ async function acceptJoin(userId, projectId, requestId){
 
         db.collection("requests").doc(requestId).delete().then(() => {
             console.log("request successfully deleted!");
+            displayRequests();
         }).catch((error) => {
             console.error("Error removing request: ", error);
         });
@@ -647,6 +653,8 @@ async function rejectJoin(userId, projectId, requestId){
 
         db.collection("requests").doc(requestId).delete().then(() => {
             console.log("request successfully deleted!");
+            displayRequests()
+
         }).catch((error) => {
             console.error("Error removing request: ", error);
         });
@@ -676,7 +684,7 @@ async function blockUser(userId) {
     }
   }
   
-  async function addEvent() {
+async function addEvent() {
     
     await db.collection("events").add({
         title: document.getElementById("event-title").value,
@@ -709,6 +717,7 @@ async function updateEvent(eventId){
 async function deleteEvent(eventId){
     db.collection("events").doc(eventId).delete().then(() => {
         console.log("Project successfully deleted!");
+        displayEvents();
     }).catch((error) => {
         console.error("Error removing project: ", error);
     });

@@ -24,8 +24,19 @@ body{
 .auth_btn_container{
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;  
+}
+.donate-container{
+    padding: 0px 16px;
+}
+.donate-container button{
+    padding: 8px 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffa467;
+    color: rgb(34, 34, 34);
+    cursor: pointer;
 }
 /* AUTH BUTTON*/ 
 .auth_btn_container a{

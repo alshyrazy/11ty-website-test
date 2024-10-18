@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/payment.css">
+    <title>Payment</title>
+    
+</head>
+<body>
+    <header style="height: 50px;"></header>
+    <div class="main-container">
+
+        <div class="side">
+            <h3>Payment methods</h3>
+
+              <ul>
+                <li id="paypal-btn" class="li-btn">
+                    <a href="#">
+                        <span class="image"></span>
+                        Paypal
+                    </a>
+                </li>
+                <li id="fawry-btn" class="li-btn">
+                    <a href="#">
+                        <span class="image"></span>
+                        Fawry
+                    </a>
+                </li>
+                <li id="bankak-btn" class="li-btn">
+                    <a href="#">
+                        <span class="image"></span>
+                        Bankak
+                    </a>
+                </li>
+                
+              </ul>
+        </div>
+
+        <div class="viwe-container">
+            <div class="view-header">
+                <div class="view-header-inner">
+                    <h3 class="collec-title" id="collec-title"> Projects</h3>
+                </div>
+            </div>
+
+            <div class="slides-container">
+                <div id="paypal-button-container"></div>
+            </div>
+        </div>
+            
+        </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    
+
+    <script src="/js/payment.js"></script>
+</body>
+
+</html>

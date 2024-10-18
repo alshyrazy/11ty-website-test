@@ -3,73 +3,34 @@ layout: base.njk
 title: Courses
 css: /css/courses.css
 ---
-<div class="space" style="height: 150px;"></div>
-    <div class="sidebar"></div>
-    <div class="filter-container">
-        <img src="/Icons/filter.png" alt="">
-        <h4>filter</h4>
-    </div>
+<div class="space" style="height: 200px;"></div>
+
+
 <div class="container">
-<ul class="list">
+<ul class="list" id="courses-list">
     <li>
         <div class="course-snippet">
-             <div class="title">
-            <div><h2 id="title">Course 1</h2> </div>
-            <div class="course-rate" id="rate">level</div>
+            <div class="title"><h2>Course 1</h2> </div>
+            <div class="meta-data"> 
+                Added <span>10/02/24</span>
             </div>
-            <div class="meta-data"> <p>Added <span id="date">10/02/24</span></p></div>
-            <div class="description"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium numquam provident minus nam nulla esse. Dolores quos vero laudantium!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium</p></div>
+            <div class="description">
+                    Lorem ipsum dolor, sit amet consectetur
+                    adipisicing elit. Repellendus laudantium numquam provident minus
+                    nam nulla esse. Dolores quos vero laudantium!Lorem ipsum dolor,
+                    sit amet consectetur adipisicing elit. Repellendus laudantium
+                </div>
             <div class="deadline"> 
-            <span id="type" class="type">Neurology</span>
-            <span>Lectures:<span id="lecture-coun">30</span></span>
-            <button id="enroll-btn" class="enroll-btn">Enroll</button>
+                <span >Neurology</span>
+                <span>Lectures:<span> 30</span></span>
+                <a>Buy</a>
             </div>
         </div>
     </li>
-    <li>
-        <div class="course-snippet">
-             <div class="title">
-            <div><h2 id="title">Course 2 </h2> </div>
-            <div class="course-rate" id="rate">level</div>
-            </div>
-            <div class="meta-data"> <p>Added <span id="date">Comming soon</span></p></div>
-            <div class="description"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium numquam provident minus nam nulla esse. Dolores quos vero laudantium!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium</p></div>
-            <div class="deadline"> 
-            <span id="type" class="type">Surgery</span>
-            <span>Lectures:<span id="lecture-coun">26</span></span>
-            <button id="enroll-btn">Enroll</button>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="course-snippet">
-             <div class="title">
-            <div><h2 id="title">Course 3</h2> </div>
-            <div class="course-rate" id="rate">level</div>
-            </div>
-            <div class="meta-data"> <p>Added <span id="date">22/1/24</span></p></div>
-            <div class="description"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium numquam provident minus nam nulla esse. Dolores quos vero laudantium!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium</p></div>
-            <div class="deadline"> 
-            <span id="type" class="type">Anatomy</span>
-            <span>Lectures:<span id="lecture-coun">54</span></span>
-            <button id="enroll-btn">Enroll</button>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="course-snippet">
-             <div class="title">
-            <div><h2 id="title">Course 4 </h2> </div>
-            <div class="course-rate" id="rate">level</div>
-            </div>
-            <div class="meta-data"> <p>Added <span id="date">Comming soon</span></p></div>
-            <div class="description"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium numquam provident minus nam nulla esse. Dolores quos vero laudantium!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus laudantium</p></div>
-            <div class="deadline"> 
-            <span id="type" class="type">Surgery</span>
-            <span>Lectures:<span id="lecture-coun">40</span></span>
-            <button id="enroll-btn">Enroll</button>
-            </div>
-        </div>
-    </li>
+
 </ul>
 </div> 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="/js/courses.js"></script>

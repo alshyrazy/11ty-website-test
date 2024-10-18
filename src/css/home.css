@@ -15,8 +15,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(239, 240, 244, 0.479);
-
+  color: rgba(69, 62, 94, 0.082);
+}
+.who-we-container:hover{
+ 
+  background: rgba(255, 255, 255, 0.24); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Applies the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted look */
+  color: black;
+  
 }
 .who-we-container div{
  
@@ -29,7 +37,7 @@
   width: 80%;
   font-size: 16px;
   font-weight: 500;
-  color: rgb(4, 43, 0);
+ 
   line-height: 24px;
 }
   .events{

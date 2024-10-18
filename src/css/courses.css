@@ -4,116 +4,83 @@
 --border: 1px solid black;
 }
 
-.filter-container{
-
-margin-left: 20px;
-margin-top: 10px;
-width: fit-content;
-}
-.filter-container h4{
-font-family: Arial, Helvetica, sans-serif;
-display: inline-block;
-}
-.filter-container img{
-    width: 12px;
-}
-.filter-container:hover{
-    cursor: pointer;
-}
 .container{
-display: grid;
-grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .list{
-list-style-type: none; /* Optional: Remove bullet points */
-display: contents;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none; 
+    padding: 0px;
+    width: 90%;  
 }
 .list li{
-    
+    width: 45%;
+    padding: 10px;
+    margin: 20px;
 }
 .course-snippet{
- display: grid;
- grid-template-rows: 20% 20% 40% 20%;
- height:260px;
- width: 80%;
- border-radius: 16px;
- padding: 10px;
- box-shadow: 0 0 26px #6b6ec646;
- background-color: white;
- margin: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+    border-radius: 5px;
+    padding: 10px 20px;
 }
-.course-snippet div{
- 
-}
+
 
 /* === title === */
 .course-snippet .title{
-display: grid;
-grid-template-columns: 70% 30%;
-}
-.course-snippet .title div{
-    display: inline-block;
-    height: 100%;
-    
-}
-.course-snippet .title h2{
-    margin-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.course-snippet .title .course-rate{
-text-align: center;
-line-height: 50px;
+    display: flex;
+    flex-direction: row;
 }
 
 /* === meat-data === */
-.course-snippet .meta-data{
-
+.meta-data{
+    margin-bottom: 10px;
+    font-size: 14;
+    font-weight: 500;
 }
-.course-snippet .meta-data p{
-    margin-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 50px;
-}
-.course-snippet .meta-data p span{
-color: rgb(1, 182, 31);
-font-family: 'Times New Roman', Times, serif;
+.meta-data span{
+    font-size: medium;
+    color: rgb(1, 182, 31);
+   
 }
 
 /* === description === */
-.course-snippet .description{
+.description{
     overflow: hidden;
-}
-.course-snippet .description p{
-    margin-left:10px;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* === deadline === */
-.course-snippet .deadline{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.deadline{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    margin: 20px 0px;
+    
 }
-.course-snippet .deadline span{
-    margin-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.course-snippet .deadline button{
+
+.deadline a{
+    display: block;
     border: none;
-    border-radius: 16px;
-    width: 80px;
-    padding: 8px;
-    background-color: rgb(1, 182, 31);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    height: 36px;
+    line-height: 36px;
     font-weight: 500;
-    margin-left: 100px;
+    background-color: rgb(49, 61, 62);
+    color: rgb(255, 255, 255);
+    padding: 0px 20px;
+    font-size: 14px;
+    text-decoration: none;
 }
-.course-snippet .deadline button:hover{
+.deadline a:hover{
     cursor: pointer;
     background-color: rgb(0, 150, 25);
-}
-.course-snippet .type{
-    color: rgb(1, 182, 31);
 }

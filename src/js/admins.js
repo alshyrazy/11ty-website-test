@@ -19,7 +19,13 @@ let currentEventDoneClickListener = null;
 let eventCancleHaveListener = false;
 let eventDoneHaveListener = false;
 
+let currentCourseCancleClickListener = null;
+let currentCourseDoneClickListener = null;
+let courseCancleHaveListener = false;
+let courseDoneHaveListener = false;
+
 const projectBtn = document.getElementById("project-btn");
+const courseBtn = document.getElementById("course-btn");
 const researchtBtn = document.getElementById("research-btn");
 const memberBtn = document.getElementById("member-btn");
 const requestBtn = document.getElementById("request-btn");
@@ -30,30 +36,51 @@ const addBtnTitle =  document.getElementById("add-btn-title");
 const collectionTitle = document.getElementById("collec-title");
 const addProjectMenu = document.getElementById("add-project-menu");
 const addEventMenu = document.getElementById("add-event-menu");
+const addCourseMenu = document.getElementById("add-course-menu");
+
 const addProjectCancle = document.getElementById("add-project-cancle");
 const addProjectDone = document.getElementById("add-project-done");
+
+const addCourseCancle = document.getElementById("add-course-cancle");
+const addCourseDone = document.getElementById("add-course-done");
+const addCourseBtn = document.getElementById("add-course-btn");
+
 const addEventCancle = document.getElementById("add-event-cancle");
 const addEventDone = document.getElementById("add-event-done");
 const addEventBtn = document.getElementById("add-event-btn");
 const addResearchBtn = document.getElementById("add-research-btn");
 
 
+//VIEW BUTTONS
 projectBtn.onclick = function(){
 
     collectionTitle.innerText = "Projects";
 
+    addCourseBtn.style.display = "none";
     addResearchBtn.style.display = "none";
     addEventBtn.style.display = "none";
     addBtn.style.display = "block";
+
     displayProjects();
 }
-researchtBtn.onclick = function(){
-    collectionTitle.innerText = "Researches";
-    addResearchBtn.style.display = "block";
+courseBtn.onclick = function(){
+    document.getElementById("collec-title").innerText = "Courses";
+
+    addCourseBtn.style.display = "block";
+    addResearchBtn.style.display = "none";
     addEventBtn.style.display = "none";
     addBtn.style.display = "none";
 
-    
+    displayCourses();
+}
+researchtBtn.onclick = function(){
+    collectionTitle.innerText = "Researches";
+
+    addResearchBtn.style.display = "block";
+    addEventBtn.style.display = "none";
+    addBtn.style.display = "none";
+    addCourseBtn.style.display = "none";
+
     displayResearches();
 }
 memberBtn.onclick = function(){
@@ -62,6 +89,7 @@ memberBtn.onclick = function(){
     addResearchBtn.style.display = "none";
     addEventBtn.style.display = "none";
     addBtn.style.display = "none";
+    addCourseBtn.style.display = "none";
 
     displayUsers();
 }
@@ -71,18 +99,22 @@ requestBtn.onclick = function(){
     addResearchBtn.style.display = "none";
     addEventBtn.style.display = "none";
     addBtn.style.display = "none";
+    addCourseBtn.style.display = "none";
 
     displayRequests();
 }
 eventBtn.onclick = function(){
     collectionTitle.innerText = "Events"
+
     addResearchBtn.style.display = "none"
     addEventBtn.style.display = "block"
     addBtn.style.display = "none"
+    addCourseBtn.style.display = "none";
     
     displayEvents();
 }
 
+//ADD BUTTONS
 addBtn.onclick = function(){
     addProjectMenu.style.display = "block";
 
@@ -169,6 +201,51 @@ addEventBtn.onclick = function(){
         //console.log("new done listener Added");
     }
 }
+addCourseBtn.onclick = function(){
+    addCourseMenu.style.display = "block";
+
+    //Add eventListeners
+    if(courseCancleHaveListener){
+        addCourseCancle.removeEventListener('click', currentCourseCancleClickListener);
+
+        currentCourseCancleClickListener = function (){
+            if(addCourseMenu.style.display === "block"){
+                addCourseMenu.style.display = "none";
+            }
+            console.log("Cansle from new");
+        }
+        addCourseCancle.addEventListener('click', currentCourseCancleClickListener);
+    } else{
+        currentCourseCancleClickListener = function (){
+            if(addCourseMenu.style.display === "block"){
+                addCourseMenu.style.display = "none";
+            }
+            console.log("Cancle from new");
+        }
+        addCourseCancle.addEventListener('click', currentCourseCancleClickListener);
+        courseCancleHaveListener = true;
+        console.log("new listener Added to course");
+    }
+
+    if(courseDoneHaveListener){
+        addCourseDone.removeEventListener('click', currentCourseDoneClickListener);
+        currentCourseDoneClickListener = function (){
+            addCourse();
+            addCourseMenu.style.display = "none";
+            console.log("Done from new");
+        }
+        addCourseDone.addEventListener('click', currentCourseDoneClickListener);
+    } else{
+        currentCourseDoneClickListener = function (){
+            addCourse();
+            addCourseMenu.style.display = "none";
+            console.log("Done from new");
+        }
+        addCourseDone.addEventListener('click', currentCourseDoneClickListener);
+       courseDoneHaveListener = true;
+        //console.log("new done listener Added");
+    }
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -184,7 +261,60 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-  async function displayProjects() {
+//RESEARCHES operation side
+async function displayResearches() {
+    try {
+
+      const querySnapshot = await db.collection("Researches").get();
+      
+      const projectList = document.getElementById("project-list");
+
+      projectList.innerHTML = '';
+
+      querySnapshot.forEach((doc) => {
+
+        const project = doc.data();
+        
+        const li = document.createElement("li");
+        const div = document.createElement("div");
+
+        //Edit button
+        const btn1 = document.createElement("button");
+        btn1.addEventListener('click', () =>{            
+   
+          })
+        btn1.classList.add("button1");
+        btn1.innerText = "Edit";
+        
+        // Delete button
+        const btn2 = document.createElement("button");
+        btn2.addEventListener('click', () =>{
+         
+          })
+        btn2.classList.add("button2");
+        btn2.innerText = "Delete";
+
+        const a = document.createElement("a");
+        a.href = "#";  
+
+        const h3 = document.createElement("h3");
+        h3.textContent = project.name;  
+        a.appendChild(h3);
+        div.appendChild(btn1);
+        div.appendChild(btn2);
+        li.appendChild(a);
+        li.appendChild(div);
+
+        projectList.appendChild(li);
+      });
+      
+    } catch (error) {
+      console.error("Error retrieving projects: ", error);
+    }
+}
+
+//PROJECTS operation side
+async function displayProjects() {
     try {
 
       const querySnapshot = await db.collection("Projects").get();
@@ -281,13 +411,61 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error retrieving projects: ", error);
     }
-  }
+}
+async function addProject() {
+    
+    await db.collection("Projects").add({
+        title: document.getElementById("project-title").value,
+        author: document.getElementById("project-author").value,
+        date: document.getElementById("project-date").value,           
+        description: document.getElementById("project-description").value,
+        deadline:document.getElementById("project-deadline").value, 
+        special: document.getElementById("project-special").value,     
+        status: document.getElementById("project-status").value,
+        link: document.getElementById("project-link").value
+    })
+    .then((docRef) => {
+        console.log("Project added with ID: ", docRef.id);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error adding project: ", error);
+    });
+}
+async function updateProject(projectId){
 
+    await db.collection("Projects").doc(projectId).update({
+        title: document.getElementById("project-title").value,
+        author: document.getElementById("project-author").value,
+        date: document.getElementById("project-date").value,           
+        description: document.getElementById("project-description").value,
+        deadline:document.getElementById("project-deadline").value, 
+        special: document.getElementById("project-special").value,     
+        status: document.getElementById("project-status").value,
+        link: document.getElementById("project-link").value
+    })
+    .then((docRef) => {
+        console.log("Project updtaed with ID: ",projectId);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error updating project: ", error);
+    });
+}
+async function deleteProject(projectId){
+    db.collection("Projects").doc(projectId).delete().then(() => {
+        console.log("Project successfully deleted!");
+        displayProjects()
+    }).catch((error) => {
+        console.error("Error removing project: ", error);
+    });
+}
 
-  async function displayResearches() {
+//COURSES operation side
+async function displayCourses() {
     try {
 
-      const querySnapshot = await db.collection("Researches").get();
+      const querySnapshot = await db.collection("courses").get();
       
       const projectList = document.getElementById("project-list");
 
@@ -295,32 +473,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
       querySnapshot.forEach((doc) => {
 
-        const project = doc.data();
+        const course = doc.data();
         
         const li = document.createElement("li");
         const div = document.createElement("div");
 
         //Edit button
         const btn1 = document.createElement("button");
-        btn1.addEventListener('click', () =>{            
-   
-          })
+        btn1.addEventListener('click', () =>{ 
+
+            addCourseMenu.style.display = "block";
+
+            document.getElementById("course-title").value = course.title
+            document.getElementById("course-count").value = course.lectureCount;
+            document.getElementById("course-date").value = course.date;          
+            document.getElementById("course-description").value = course.description;
+            document.getElementById("course-special").value = course.special;   
+            document.getElementById("course-link").value = course.link;
+                  
+            if(courseCancleHaveListener){
+                addCourseCancle.removeEventListener('click', currentCourseCancleClickListener);
+        
+                currentCourseCancleClickListener = function (){
+                    if(addCourseMenu.style.display === "block"){
+                        addCourseMenu.style.display = "none";
+                    }
+                    console.log("Cansle from new");
+                }
+                addCourseCancle.addEventListener('click', currentCourseCancleClickListener);
+            } else{
+                currentCourseCancleClickListener = function (){
+                    if(addCourseMenu.style.display === "block"){
+                        addCourseMenu.style.display = "none";
+                    }
+                    console.log("Cancle from edit");
+                }
+                addCourseCancle.addEventListener('click', currentCourseCancleClickListener);
+                courseCancleHaveListener = true;
+                console.log("new listener Added to course");
+            }
+        
+            if(courseDoneHaveListener){
+                addCourseDone.removeEventListener('click', currentCourseDoneClickListener);
+                currentCourseDoneClickListener = function (){
+                    updateCourse(doc.id);
+                    addCourseMenu.style.display = "none";
+                    console.log("Done from edit");
+                }
+                addCourseDone.addEventListener('click', currentCourseDoneClickListener);
+            } else{
+                currentCourseDoneClickListener = function (){
+                    updateCourse(doc.id);
+                    addCourseMenu.style.display = "none";
+                    console.log("Done from edit");
+                }
+                addCourseDone.addEventListener('click', currentCourseDoneClickListener);
+               courseDoneHaveListener = true;
+                //console.log("new done listener Added");
+            }
+           
+          });
         btn1.classList.add("button1");
         btn1.innerText = "Edit";
         
         // Delete button
         const btn2 = document.createElement("button");
         btn2.addEventListener('click', () =>{
-         
+            deleteCourse(doc.id);
           })
         btn2.classList.add("button2");
         btn2.innerText = "Delete";
+
 
         const a = document.createElement("a");
         a.href = "#";  
 
         const h3 = document.createElement("h3");
-        h3.textContent = project.name;  
+        h3.textContent = course.title;  
         a.appendChild(h3);
         div.appendChild(btn1);
         div.appendChild(btn2);
@@ -333,9 +562,55 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error retrieving projects: ", error);
     }
-  }
+}
+async function addCourse() {
+    
+    await db.collection("courses").add({
+        title: document.getElementById("course-title").value,
+        lectureCount: document.getElementById("course-count").value,
+        date: document.getElementById("course-date").value,           
+        description: document.getElementById("course-description").value,
+        special: document.getElementById("course-special").value,     
+        link: document.getElementById("course-link").value
+    })
+    .then((docRef) => {
+        console.log("Course added with ID: ", docRef.id);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error adding Course: ", error);
+    });
+}
+async function updateCourse(courseId){
 
-  async function displayEvents() {
+    await db.collection("courses").doc(courseId).update({
+
+        title: document.getElementById("course-title").value,
+        lectureCount: document.getElementById("course-count").value,
+        date: document.getElementById("course-date").value,           
+        description: document.getElementById("course-description").value,
+        special: document.getElementById("course-special").value,     
+        link: document.getElementById("course-link").value
+    })
+    .then((docRef) => {
+        console.log("Course updtaed with ID: ",courseId);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error updating Course: ", error);
+    });
+}
+async function deleteCourse(courseId){
+    db.collection("courses").doc(courseId).delete().then(() => {
+        console.log("Course successfully deleted!");
+        displayCourses();
+    }).catch((error) => {
+        console.error("Error removing Course: ", error);
+    });
+}
+
+//EVENTS operation side
+async function displayEvents() {
     try {
 
       const querySnapshot = await db.collection("events").get();
@@ -428,10 +703,169 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error retrieving projects: ", error);
     }
-  }
+}
+async function addEvent() {
+    
+    await db.collection("events").add({
+        title: document.getElementById("event-title").value,
+        date: document.getElementById("event-date").value,           
+        description: document.getElementById("event-description").value
+    })
+    .then((docRef) => {
+        console.log("Project added with ID: ", docRef.id);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error adding project: ", error);
+    });
+}
+async function updateEvent(eventId){
 
+    await db.collection("events").doc(eventId).update({
+        title: document.getElementById("event-title").value,
+        date: document.getElementById("event-date").value,           
+        description: document.getElementById("event-description").value
+    })
+    .then((docRef) => {
+        console.log("Project updtaed with ID: ",eventId);
+        addProjectMenu.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Error updating project: ", error);
+    });
+}
+async function deleteEvent(eventId){
+    db.collection("events").doc(eventId).delete().then(() => {
+        console.log("Project successfully deleted!");
+        displayEvents();
+    }).catch((error) => {
+        console.error("Error removing project: ", error);
+    });
+}
 
-  async function displayUsers() {
+//REQUESTS operation side
+async function displayRequests() {
+    try {
+
+      const querySnapshot = await db.collection("requests").get();
+      
+      const projectList = document.getElementById("project-list");
+
+      projectList.innerHTML = '';
+
+      querySnapshot.forEach((doc) => {
+
+        const request = doc.data();
+        
+        const li = document.createElement("li");
+        const div = document.createElement("div");
+
+        //Edit button
+        const btn1 = document.createElement("button");
+        btn1.classList.add("button1");
+        btn1.innerText = "Accept";
+        btn1.addEventListener('click', () =>{            
+            acceptJoin(request.userId, request.projectId, doc.id);
+          })
+        
+        // Delete button
+        const btn2 = document.createElement("button");
+        btn2.addEventListener('click', () =>{
+            rejectJoin(request.userId, request.projectId, doc.id);
+          })
+        btn2.classList.add("button2");
+        btn2.innerText = "Reject";
+
+        const a = document.createElement("a");
+        a.href = "#";  
+
+        const h3 = document.createElement("h3");
+        h3.textContent = request.name + " asked to join "+ request.projectTitle;  
+        a.appendChild(h3);
+        div.appendChild(btn1);
+        div.appendChild(btn2);
+        li.appendChild(a);
+        li.appendChild(div);
+
+        projectList.appendChild(li);
+      });
+      
+    } catch (error) {
+      console.error("Error retrieving projects: ", error);
+    }
+}
+async function acceptJoin(userId, projectId, requestId){
+    const status = `Projects.${projectId}.status`;
+    const docRef = db.collection("Projects").doc(projectId);
+
+    db.collection("users").doc(userId).update({
+         [status]: "allow"
+        })
+        .then(() => {
+         console.log('Information updated');
+        })
+        .catch((error) => {
+        console.error('Error during update:', error.code, error.message);
+        });
+
+        db.collection("requests").doc(requestId).delete().then(() => {
+            console.log("request successfully deleted!");
+            displayRequests();
+        }).catch((error) => {
+            console.error("Error removing request: ", error);
+        });
+        
+        docRef.get().then((doc) => {
+            if (doc.exists){
+                
+                const membersMap = doc.data().members || {};
+                if (!membersMap.hasOwnProperty(userId)) {
+                    membersMap[userId] = {
+                     
+                      // Add other project details as needed
+                    };
+
+                    docRef.update({
+                    members: membersMap
+                }).then(() => {
+                    console.log("User successfully added to members");
+                }).catch((error) => {
+                    console.error("Error adding user to members:", error);
+                });
+            } else {
+                console.log("User is already part of this project");
+            }
+        } else {
+            console.log("No such project found");
+        }
+    }).catch((error) => {
+        console.error("Error fetching project:", error);
+    });
+}
+async function rejectJoin(userId, projectId, requestId){
+    const rejectedProject = `Projects.${projectId}`;
+
+    db.collection("users").doc(userId).update({
+        [rejectedProject]: firebase.firestore.FieldValue.delete()
+        })
+        .then(() => {
+         console.log('Information updated');
+        })
+        .catch((error) => {
+        console.error('Error during update:', error.code, error.message);
+        });
+
+        db.collection("requests").doc(requestId).delete().then(() => {
+            console.log("request successfully deleted!");
+            displayRequests()
+
+        }).catch((error) => {
+            console.error("Error removing request: ", error);
+        });
+}
+
+//USERS operation side
+async function displayUsers() {
     try {
 
       const querySnapshot = await db.collection("users").get();
@@ -485,181 +919,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error retrieving projects: ", error);
     }
-  }
-
-
-  async function displayRequests() {
-    try {
-
-      const querySnapshot = await db.collection("requests").get();
-      
-      const projectList = document.getElementById("project-list");
-
-      projectList.innerHTML = '';
-
-      querySnapshot.forEach((doc) => {
-
-        const request = doc.data();
-        
-        const li = document.createElement("li");
-        const div = document.createElement("div");
-
-        //Edit button
-        const btn1 = document.createElement("button");
-        btn1.classList.add("button1");
-        btn1.innerText = "Accept";
-        btn1.addEventListener('click', () =>{            
-            acceptJoin(request.userId, request.projectId, doc.id);
-          })
-        
-        // Delete button
-        const btn2 = document.createElement("button");
-        btn2.addEventListener('click', () =>{
-            rejectJoin(request.userId, request.projectId, doc.id);
-          })
-        btn2.classList.add("button2");
-        btn2.innerText = "Reject";
-
-        const a = document.createElement("a");
-        a.href = "#";  
-
-        const h3 = document.createElement("h3");
-        h3.textContent = request.name + " asked to join "+ request.projectTitle;  
-        a.appendChild(h3);
-        div.appendChild(btn1);
-        div.appendChild(btn2);
-        li.appendChild(a);
-        li.appendChild(div);
-
-        projectList.appendChild(li);
-      });
-      
-    } catch (error) {
-      console.error("Error retrieving projects: ", error);
-    }
-  }
-
-  async function addProject() {
-    
-    await db.collection("Projects").add({
-        title: document.getElementById("project-title").value,
-        author: document.getElementById("project-author").value,
-        date: document.getElementById("project-date").value,           
-        description: document.getElementById("project-description").value,
-        deadline:document.getElementById("project-deadline").value, 
-        special: document.getElementById("project-special").value,     
-        status: document.getElementById("project-status").value,
-        link: document.getElementById("project-link").value
-    })
-    .then((docRef) => {
-        console.log("Project added with ID: ", docRef.id);
-        addProjectMenu.style.display = "none";
-    })
-    .catch((error) => {
-        console.error("Error adding project: ", error);
-    });
 }
-
-async function updateProject(projectId){
-
-    await db.collection("Projects").doc(projectId).update({
-        title: document.getElementById("project-title").value,
-        author: document.getElementById("project-author").value,
-        date: document.getElementById("project-date").value,           
-        description: document.getElementById("project-description").value,
-        deadline:document.getElementById("project-deadline").value, 
-        special: document.getElementById("project-special").value,     
-        status: document.getElementById("project-status").value,
-        link: document.getElementById("project-link").value
-    })
-    .then((docRef) => {
-        console.log("Project updtaed with ID: ",projectId);
-        addProjectMenu.style.display = "none";
-    })
-    .catch((error) => {
-        console.error("Error updating project: ", error);
-    });
-}
-async function deleteProject(projectId){
-    db.collection("Projects").doc(projectId).delete().then(() => {
-        console.log("Project successfully deleted!");
-        displayProjects()
-    }).catch((error) => {
-        console.error("Error removing project: ", error);
-    });
-}
-
-async function acceptJoin(userId, projectId, requestId){
-    const status = `Projects.${projectId}.status`;
-    const docRef = db.collection("Projects").doc(projectId);
-
-    db.collection("users").doc(userId).update({
-         [status]: "allow"
-        })
-        .then(() => {
-         console.log('Information updated');
-        })
-        .catch((error) => {
-        console.error('Error during update:', error.code, error.message);
-        });
-
-        db.collection("requests").doc(requestId).delete().then(() => {
-            console.log("request successfully deleted!");
-            displayRequests();
-        }).catch((error) => {
-            console.error("Error removing request: ", error);
-        });
-        
-        docRef.get().then((doc) => {
-            if (doc.exists){
-                
-                const membersMap = doc.data().members || {};
-                if (!membersMap.hasOwnProperty(userId)) {
-                    membersMap[userId] = {
-                     
-                      // Add other project details as needed
-                    };
-
-                    docRef.update({
-                    members: membersMap
-                }).then(() => {
-                    console.log("User successfully added to members");
-                }).catch((error) => {
-                    console.error("Error adding user to members:", error);
-                });
-            } else {
-                console.log("User is already part of this project");
-            }
-        } else {
-            console.log("No such project found");
-        }
-    }).catch((error) => {
-        console.error("Error fetching project:", error);
-    });
-}
-
-async function rejectJoin(userId, projectId, requestId){
-    const rejectedProject = `Projects.${projectId}`;
-
-    db.collection("users").doc(userId).update({
-        [rejectedProject]: firebase.firestore.FieldValue.delete()
-        })
-        .then(() => {
-         console.log('Information updated');
-        })
-        .catch((error) => {
-        console.error('Error during update:', error.code, error.message);
-        });
-
-        db.collection("requests").doc(requestId).delete().then(() => {
-            console.log("request successfully deleted!");
-            displayRequests()
-
-        }).catch((error) => {
-            console.error("Error removing request: ", error);
-        });
-}
-
 async function blockUser(userId) {
     try {
       // Update the user's 'blocked' field to true in Firestore
@@ -682,43 +942,5 @@ async function blockUser(userId) {
       console.error("Error blocking the user: ", error);
       alert("Error blocking the user. Please try again.");
     }
-  }
+}
   
-async function addEvent() {
-    
-    await db.collection("events").add({
-        title: document.getElementById("event-title").value,
-        date: document.getElementById("event-date").value,           
-        description: document.getElementById("event-description").value
-    })
-    .then((docRef) => {
-        console.log("Project added with ID: ", docRef.id);
-        addProjectMenu.style.display = "none";
-    })
-    .catch((error) => {
-        console.error("Error adding project: ", error);
-    });
-}
-async function updateEvent(eventId){
-
-    await db.collection("events").doc(eventId).update({
-        title: document.getElementById("event-title").value,
-        date: document.getElementById("event-date").value,           
-        description: document.getElementById("event-description").value
-    })
-    .then((docRef) => {
-        console.log("Project updtaed with ID: ",eventId);
-        addProjectMenu.style.display = "none";
-    })
-    .catch((error) => {
-        console.error("Error updating project: ", error);
-    });
-}
-async function deleteEvent(eventId){
-    db.collection("events").doc(eventId).delete().then(() => {
-        console.log("Project successfully deleted!");
-        displayEvents();
-    }).catch((error) => {
-        console.error("Error removing project: ", error);
-    });
-}

@@ -46,7 +46,7 @@ async function retrieve() {
 }
 
 //Don't forgot to uncomment this when deploying to github
-//window.onload = retrieve;
+window.onload = retrieve;
 
 
 bankakBtn.onclick = function (){

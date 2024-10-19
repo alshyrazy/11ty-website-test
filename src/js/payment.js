@@ -18,6 +18,7 @@ const firebaseConfig = firebase.initializeApp({
 });
 const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
+const storage = firebaseConfig.storage();
 
 
 function getQueryParam(param) {
@@ -44,11 +45,12 @@ async function retrieve() {
     });
 }
 
-window.onload = retrieve;
+//Don't forgot to uncomment this when deploying to github
+//window.onload = retrieve;
 
 
 bankakBtn.onclick = function (){
-
+    const userId = authen.currentUser.uid;
     collecTitle .innerText = "Bankak";
     cont.innerHTML = '';
 
@@ -98,6 +100,23 @@ bankakBtn.onclick = function (){
 
     const a = document.createElement("a");
     a.innerText = "Purchas";
+    a.addEventListener('click', function (){
+        //purchas and make joinCourse request
+        const file = input.files[0];
+        uploadFile(file).then((downloadURL) => {
+            console.log('File uploaded! Download URL:', downloadURL);
+            db.collection("requests").add({
+                type: "Join Course",
+                courseId: courseId,
+                userId: userId,
+                courseTitle: courseTitle,
+                prove: downloadURL,
+                tag: "course"
+              });
+        }).catch((error) => {
+            console.error(error);
+        });
+    });
 
     purchasDiv.appendChild(a);
     imageDiv.appendChild(proveP);
@@ -113,11 +132,33 @@ bankakBtn.onclick = function (){
 
     cont.appendChild(containerDiv);
 }
-
 fawryBtn.onclick = function (){
 
 }
-
 payPalBtn.onclick = function (){
 
+}
+
+
+//Upload the prove image
+function uploadFile(file) {
+    return new Promise((resolve, reject) => {
+
+        if (!file) {
+            reject("No file selected!");
+            return;
+        }
+
+        const storageRef = storage.ref();
+        const fileRef = storageRef.child(`purchasProves/${file.name}`);
+
+        fileRef.put(file).then(() => {
+            return fileRef.getDownloadURL();
+        }).then((downloadURL) => {
+            alert('Upload completed successfully!');
+            resolve(downloadURL);  // Return the download URL as the resolved value
+        }).catch((error) => {
+            reject('Failed to upload the file: ' + error);
+        });
+    });
 }

@@ -1,6 +1,5 @@
 const enrollBtn = document.getElementById("enroll-btn");
 
-
 const firebaseConfig = firebase.initializeApp({
     apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
     authDomain: "static-site-firebase.firebaseapp.com",
@@ -12,7 +11,7 @@ const firebaseConfig = firebase.initializeApp({
 const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
 
-
+//Retriev all courses and display them
 async function displayCourses() {
     try {
 
@@ -63,7 +62,9 @@ async function displayCourses() {
         const a = document.createElement("a");
         a.innerText = "Buy"
         a.addEventListener('click', function(){
-            window.location.href = `/payment?id=${doc.id}`; 
+          enroll(doc.id);
+          //window.location.href = `/payment?id=${doc.id}`;
+           
         });
 
         lecSpan.appendChild(countSpan);
@@ -86,6 +87,62 @@ async function displayCourses() {
     } catch (error) {
       console.error("Error retrieving courses: ", error);
     }
-  }
+}
 
 window.onload = displayCourses;
+
+//Add the course in the Courses map
+async function enroll(courseId){
+  const docRef = db.collection("users").doc(authen.currentUser.uid);
+  let courseTitle;
+  let courseLink;
+  
+  const courseRef = db.collection("courses").doc(courseId);
+  courseRef.get().then((doc) => {
+      if (doc.exists) {
+           courseTitle = doc.data().title;
+           courseLink = doc.data().link;
+          console.log("Project title:", courseTitle);
+      } else {
+          console.log("No such document!");
+      }
+  }).catch((error) => {
+      console.error("Error getting document:", error);
+  });
+  
+  await docRef.get().then((doc) => {
+    if (doc.exists) {
+      const userData = doc.data();
+
+      const courseMap = userData.Courses || {};
+
+        // Check if the project is already added
+        if (!courseMap.hasOwnProperty(courseId)) {
+          // Add the project to the Projects map
+          courseMap[courseId] = {
+            title: courseTitle,
+            status: "pinned",
+            link: courseLink
+            // Add other project details as needed
+          };
+         
+          // Update the user's Projects map in Firestore
+           docRef.update({
+            Courses: courseMap
+          }).then(() => {
+            //location.reload();
+            console.log("Project added successfully!");
+          }).catch((error) => {
+            console.error("Error updating document: ", error);
+          });
+        } else {
+          console.log("User is already part of this project.");
+        }
+      } else {
+        console.log("User has reached the limit of 3 projects.");
+      }
+    
+  }).catch((error) => {
+    console.log("Error getting document:", error);
+    });
+}

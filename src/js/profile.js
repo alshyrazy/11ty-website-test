@@ -72,7 +72,6 @@ window.onclick = function(event){
     //setImageContainer.style.display = "none"
 }
  
-
 authen.onAuthStateChanged((user) => {
     if (user) {
       ID = user.uid;
@@ -131,7 +130,7 @@ function signOutUser() {
     console.error("Error signing out: ", error);
   });
 }
-
+//Edit personal Image
 async function set(userId, imageSrc){
  await db.collection("users").doc(userId).update({
     profilePicture: imageSrc
@@ -340,7 +339,7 @@ async function displayAchivments(userId) {
     console.error("Error retrieving projects: ", error);
   }*/
 }
-
+//Retrieve profile built-in images
 function getImages(){
   const storageRef = storage.ref('profile images/');
 

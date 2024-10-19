@@ -571,7 +571,8 @@ async function addCourse() {
         date: document.getElementById("course-date").value,           
         description: document.getElementById("course-description").value,
         special: document.getElementById("course-special").value,     
-        link: document.getElementById("course-link").value
+        link: document.getElementById("course-link").value,
+        members: {}
     })
     .then((docRef) => {
         console.log("Course added with ID: ", docRef.id);
@@ -763,19 +764,52 @@ async function displayRequests() {
         //Edit button
         const btn1 = document.createElement("button");
         btn1.classList.add("button1");
-        btn1.innerText = "Accept";
-        btn1.addEventListener('click', () =>{            
-            acceptJoin(request.userId, request.projectId, doc.id);
-          })
-        
-        // Delete button
         const btn2 = document.createElement("button");
-        btn2.addEventListener('click', () =>{
-            rejectJoin(request.userId, request.projectId, doc.id);
-          })
         btn2.classList.add("button2");
-        btn2.innerText = "Reject";
 
+        if(request.tag === "project"){
+            btn1.innerText = "Accept";
+            btn1.addEventListener('click', () =>{            
+                acceptJoin(request.userId, request.projectId, doc.id);
+            })
+        
+            btn2.innerText = "Reject";
+            btn2.addEventListener('click', () =>{
+                rejectJoin(request.userId, request.projectId, doc.id);
+            })
+    } else if(request.tag === "course"){
+
+            const menu = document.getElementById('view-purchas-menu');
+            const accept = document.getElementById('accept-purchas');
+            const cancle = document.getElementById('cancle-purchas');
+            const save = document.getElementById('save-btn');
+            const proveImg = document.getElementById("prove-img");
+
+            btn1.innerText = "View";
+            btn1.addEventListener('click', () =>{ 
+                document.getElementById("purchas-course-title").innerText = request.courseTitle;
+                proveImg.src = request.prove;
+                menu.style.display = "block";           
+                accept.addEventListener('click', function (){
+                    acceptJoinCourse(request.userId, request.courseId, doc.id);
+                });
+                cancle.addEventListener('click', function (){
+                    console.log("canle");
+                    if(menu.style.display === "block"){
+                        menu.style.display = "none";
+                    }
+                });
+                save.addEventListener('click', function (){
+                    downloadImageFromURL(request.prove);
+                });
+                
+            })
+        
+            btn2.innerText = "Delete";
+            btn2.addEventListener('click', () =>{
+                rejectJoinCourse(request.userId, request.courseId, doc.id);
+            })    
+    }
         const a = document.createElement("a");
         a.href = "#";  
 
@@ -847,6 +881,76 @@ async function rejectJoin(userId, projectId, requestId){
 
     db.collection("users").doc(userId).update({
         [rejectedProject]: firebase.firestore.FieldValue.delete()
+        })
+        .then(() => {
+         console.log('Information updated');
+        })
+        .catch((error) => {
+        console.error('Error during update:', error.code, error.message);
+        });
+
+        db.collection("requests").doc(requestId).delete().then(() => {
+            console.log("request successfully deleted!");
+            displayRequests()
+
+        }).catch((error) => {
+            console.error("Error removing request: ", error);
+        });
+}
+async function acceptJoinCourse(userId, courseId, requestId){
+    const status = `Courses.${courseId}.status`;
+    const docRef = db.collection("courses").doc(courseId);
+
+    db.collection("users").doc(userId).update({
+         [status]: "allow"
+        })
+        .then(() => {
+         console.log('Information updated');
+        })
+        .catch((error) => {
+        console.error('Error during update:', error.code, error.message);
+        });
+
+        db.collection("requests").doc(requestId).delete().then(() => {
+            console.log("request successfully deleted!");
+            displayRequests();
+        }).catch((error) => {
+            console.error("Error removing request: ", error);
+        });
+        
+        docRef.get().then((doc) => {
+            if (doc.exists){
+                
+                const membersMap = doc.data().members || {};
+
+                if (!membersMap.hasOwnProperty(userId)) {
+                    membersMap[userId] = {
+                     
+                      // Add other project details as needed
+                    };
+
+                    docRef.update({
+                    members: membersMap
+                }).then(() => {
+                    console.log("User successfully added to members");
+                }).catch((error) => {
+                    console.error("Error adding user to members:", error);
+                });
+            } else {
+                console.log("User is already part of this project");
+            }
+        } else {
+            console.log("No such project found");
+        }
+    }).catch((error) => {
+        console.error("Error fetching project:", error);
+    });
+}
+async function rejectJoinCourse(userId, courseId, requestId){
+    const rejectedCourse = `Course.${courseId}`;
+
+    db.collection("users").doc(userId).update({
+        [rejectedCourse]: firebase.firestore.FieldValue.delete()
         })
         .then(() => {
          console.log('Information updated');
@@ -944,3 +1048,15 @@ async function blockUser(userId) {
     }
 }
   
+
+//Utillis 
+function downloadImageFromURL(imageURL) {
+    const a = document.createElement('a');
+    a.href = imageURL;
+    a.download = 'downloaded-image.jpeg';  
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+

@@ -7,12 +7,12 @@ const firebaseConfig = firebase.initializeApp({
     storageBucket: "static-site-firebase.appspot.com",
     messagingSenderId: "94422243821",
     appId: "1:94422243821:web:a274bee2c61bcd6bd6afe4"
-  });
+});
   
-  const authen = firebaseConfig.auth();
-  const db = firebaseConfig.firestore();
+const authen = firebaseConfig.auth();
+const db = firebaseConfig.firestore();
 
-  authen.onAuthStateChanged((user) => {
+authen.onAuthStateChanged((user) => {
     if(user){
       const userId = user.uid;
       const profileImage = document.getElementById("profile-image");
@@ -23,9 +23,9 @@ const firebaseConfig = firebase.initializeApp({
           profileImage.src = userData.profilePicture;
         }});
     }
-  });
+});
   
-  function signOutUser() {
+function signOutUser() {
     authen.signOut().then(() => {
       console.log("User signed out successfully.");
       // Optionally, redirect to another page or show a message
@@ -33,8 +33,7 @@ const firebaseConfig = firebase.initializeApp({
     }).catch((error) => {
       console.error("Error signing out: ", error);
     });
-  }
-
+}
 
 function searchAcrossCollections(query) {
   document.getElementById("searchResults").innerHTML = "";
@@ -72,7 +71,6 @@ function searchAcrossCollections(query) {
       });
     });*/
 }
-
 // Function to handle displaying search results
 function displaySearchResult(type, data) {
   const resultDiv = document.getElementById("searchResults");
@@ -82,6 +80,7 @@ function displaySearchResult(type, data) {
   const p = document.createElement("p");
   const strong = document.createElement("strong");
   const span = document.createElement("span");
+  span.style.color = "blue"
 
   // Set content
   strong.innerText = type + " ";
@@ -104,7 +103,6 @@ function displaySearchResult(type, data) {
   // Append to the result div
   resultDiv.appendChild(a);
 }
-
 // Event listener for search input
 document.getElementById("searchInput").addEventListener("input", (event) => {
   const searchQuery = event.target.value;

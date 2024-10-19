@@ -51,6 +51,7 @@ async function apply(projectId){
 const docRef = db.collection("users").doc(authen.currentUser.uid);
 let projectTitle;
 let projectLink;
+
 const projRef = db.collection("Projects").doc(projectId);
 projRef.get().then((doc) => {
     if (doc.exists) {
@@ -88,7 +89,8 @@ await docRef.get().then((doc) => {
           projectId: projectId,
           userId: userData.uid,
           name: userData.fullname,
-          projectTitle: projectTitle
+          projectTitle: projectTitle, 
+          tag: "project"
         });
         // Update the user's Projects map in Firestore
          docRef.update({

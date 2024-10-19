@@ -4,6 +4,7 @@ body{
     "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
      padding: 0px 20px;
+     
 }
 a{
     text-decoration: none;
@@ -134,8 +135,78 @@ li {
 }
 
 
-.viwe-container .slides-container{
+.slides-container{
     width: 90%;
+    height: fit-content;
+    margin-top: 20px;
+}
+.Bankak-container{
+    
     height: 100%;
-    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: rgba(68, 74, 87, 0.05) 0px 2px 6px 0px, rgba(68, 74, 87, 0.1) 0px 1px 3px 0px;
+    padding: 10px 50px;
+}
+
+.Bankak-container div{
+   
+}
+.order-info{
+    padding: 10px 20px;
+    font-weight: 500;
+}
+.order-info span{
+    color: rgb(12, 122, 12);
+}
+.done-btn{
+    margin-top: 20px;
+    padding: 20px 0px;
+}
+.done-btn a{
+    display: block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(68, 74, 87, 0.15) 0px 4px 12px 0px, rgba(68, 74, 87, 0.25) 0px 1px 3px 0px;
+    width: fit-content;
+    height: 36px;
+    line-height: 36px;
+    font-weight: 500;
+    background-color: rgb(49, 61, 62);
+    color: rgb(255, 255, 255);
+    padding: 0px 30px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.image-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-weight: 500;
+    font-size: 16;
+}
+.image-info input[type="file"]{
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 5px 10px;
+    color: white;
+    background-color: rgb(17, 159, 253);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.custom-file-upload:hover {
+    background-color: rgb(9, 116, 187);
+   
+}
+.custom-file-upload:focus {
+    outline: 2px solid #4CAF50;
 }

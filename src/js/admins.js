@@ -787,6 +787,7 @@ async function displayRequests() {
             const save = document.getElementById('save-btn');
             const proveImg = document.getElementById("prove-img");
             h3.textContent = request.name + " asked to join "+ request.courseTitle;
+            
             btn1.innerText = "View";
             btn1.addEventListener('click', () =>{ 
                 document.getElementById("purchas-course-title").innerText = request.courseTitle;

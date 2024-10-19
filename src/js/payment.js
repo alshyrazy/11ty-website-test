@@ -99,6 +99,7 @@ bankakBtn.onclick = function (){
     purchasDiv.classList.add("done-btn");
 
     const a = document.createElement("a");
+    
     a.innerText = "Purchas";
 
     a.addEventListener('click', function (){

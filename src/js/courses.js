@@ -61,11 +61,25 @@ async function displayCourses() {
 
         const a = document.createElement("a");
         a.innerText = "Buy"
-        a.addEventListener('click', function(){
-          enroll(doc.id);
+        /*a.addEventListener('click', function(){
+          enroll(doc.id).then(() => {
+            // Only redirect once the enroll() function has completed
+            window.location.href = `/payment?id=${doc.id}`;
+        }).catch((error) => {
+            console.error('Enrollment failed:', error);
+        });
           //window.location.href = `/payment?id=${doc.id}`;
            
-        });
+        });*/
+        a.addEventListener('click', async function() {
+          try {
+              await enroll(doc.id);  // Wait for enroll() to complete
+              //console.log("done");
+              window.location.href = `/payment?id=${doc.id}`;  // Redirect after it's done
+          } catch (error) {
+              console.error('Enrollment failed:', error);
+          }
+      });
 
         lecSpan.appendChild(countSpan);
         deadLineDiv.appendChild(specialSpan);

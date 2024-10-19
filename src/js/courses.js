@@ -11,6 +11,7 @@ const firebaseConfig = firebase.initializeApp({
 const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
 
+
 //Retriev all courses and display them
 async function displayCourses() {
     try {
@@ -24,7 +25,8 @@ async function displayCourses() {
       querySnapshot.forEach((doc) => {
 
         const course = doc.data();
-        
+        const membersMap = course.members || {};
+
         const li = document.createElement("li");
         const snippetDiv = document.createElement("div");
         snippetDiv.classList.add("course-snippet");
@@ -60,26 +62,39 @@ async function displayCourses() {
         countSpan.innerText = course.lectureCount;
 
         const a = document.createElement("a");
-        a.innerText = "Buy"
-        /*a.addEventListener('click', function(){
-          enroll(doc.id).then(() => {
-            // Only redirect once the enroll() function has completed
-            window.location.href = `/payment?id=${doc.id}`;
-        }).catch((error) => {
-            console.error('Enrollment failed:', error);
-        });
-          //window.location.href = `/payment?id=${doc.id}`;
-           
-        });*/
-        a.addEventListener('click', async function() {
-          try {
-              await enroll(doc.id);  // Wait for enroll() to complete
-              //console.log("done");
-              window.location.href = `/payment?id=${doc.id}`;  // Redirect after it's done
-          } catch (error) {
+
+         if (membersMap.hasOwnProperty(authen.currentUser.uid)){
+            a.style.backgroundColor = "rgb(0, 163, 228)";
+            a.innerText = "Open"; 
+            a.addEventListener('click', () =>{
+            window.location.href = course.link;
+            //console.log(course.link)
+          })
+         }
+         else{
+          a.innerText = "Buy"
+          /*a.addEventListener('click', function(){
+            enroll(doc.id).then(() => {
+              // Only redirect once the enroll() function has completed
+              window.location.href = `/payment?id=${doc.id}`;
+          }).catch((error) => {
               console.error('Enrollment failed:', error);
-          }
-      });
+          });
+            //window.location.href = `/payment?id=${doc.id}`;
+             
+          });*/
+          
+          a.addEventListener('click', async function() {
+            try {
+                await enroll(doc.id);  // Wait for enroll() to complete
+                //console.log("done");
+                window.location.href = `/payment?id=${doc.id}`;  // Redirect after it's done
+            } catch (error) {
+                console.error('Enrollment failed:', error);
+            }
+        });
+         }
+    
 
         lecSpan.appendChild(countSpan);
         deadLineDiv.appendChild(specialSpan);

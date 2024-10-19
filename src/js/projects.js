@@ -11,15 +11,18 @@ const firebaseConfig = firebase.initializeApp({
   const authen = firebaseConfig.auth();
   const db = firebaseConfig.firestore();
 
-  authen.onAuthStateChanged((user) => {
+authen.onAuthStateChanged((user) => {
     if (user) {
       const docRef = db.collection("users").doc(user.uid);
       docRef.get().then(doc => {
         const userData = doc.data();
+
         const projectsMap = userData.Projects || {};
         const userAcceptedProjects = Object.keys(projectsMap);
+
         const profileImage = document.getElementById("profile-image");
         profileImage.src = userData.profilePicture;
+        
         const applyButtons = document.querySelectorAll('.applyBtn');
         // Loop through the buttons and change text based on project status
         applyButtons.forEach(button => {

@@ -36,6 +36,7 @@ if (userId) {
         console.error('Error fetching user data:', error);
     });
     displayProjects(userId);
+    displayCourses(userId);
 } else {
     console.log('No user ID provided in the URL');
 }
@@ -75,3 +76,41 @@ async function displayProjects(userId) {
       console.error("Error retrieving projects: ", error);
     }
 }
+
+async function displayCourses(userId) {
+    try {
+  
+      const querySnapshot = await db.collection("courses").get();
+      
+      const courseList = document.getElementById("courses-list");
+  
+      courseList.innerHTML = '';
+  
+      querySnapshot.forEach((doc) => {
+  
+        const course = doc.data();
+        const membersMap = course.members || {}
+        const courseId = doc.id;
+        if(membersMap.hasOwnProperty(userId)){
+          //console.log("founded");
+          const li = document.createElement("li");   
+  
+          const a = document.createElement("a");
+          a.href = "/courses/";  
+        
+          const spanTitle = document.createElement("span");
+          spanTitle.textContent = course.title;  
+    
+          a.appendChild(spanTitle);
+          li.appendChild(a);
+          
+    
+          courseList.appendChild(li);
+        }
+  
+      });
+      
+    } catch (error) {
+      console.error("Error retrieving projects: ", error);
+    }
+  }

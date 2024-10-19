@@ -103,6 +103,7 @@ bankakBtn.onclick = function (){
     a.innerText = "Purchas";
 
     a.addEventListener('click', function (){
+        //get current user name
         let userName = '';
         db.collection("users").doc(userId).get().then((doc) => {
             if (doc.exists) {

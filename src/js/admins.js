@@ -762,12 +762,14 @@ async function displayRequests() {
         const div = document.createElement("div");
 
         //Edit button
+        const h3 = document.createElement("h3");
         const btn1 = document.createElement("button");
         btn1.classList.add("button1");
         const btn2 = document.createElement("button");
         btn2.classList.add("button2");
 
         if(request.tag === "project"){
+            h3.textContent = request.name + " asked to join "+ request.projectTitle;
             btn1.innerText = "Accept";
             btn1.addEventListener('click', () =>{            
                 acceptJoin(request.userId, request.projectId, doc.id);
@@ -784,7 +786,7 @@ async function displayRequests() {
             const cancle = document.getElementById('cancle-purchas');
             const save = document.getElementById('save-btn');
             const proveImg = document.getElementById("prove-img");
-
+            h3.textContent = request.name + " asked to join "+ request.courseTitle;
             btn1.innerText = "View";
             btn1.addEventListener('click', () =>{ 
                 document.getElementById("purchas-course-title").innerText = request.courseTitle;
@@ -792,6 +794,7 @@ async function displayRequests() {
                 menu.style.display = "block";           
                 accept.addEventListener('click', function (){
                     acceptJoinCourse(request.userId, request.courseId, doc.id);
+                    menu.style.display = "none";
                 });
                 cancle.addEventListener('click', function (){
                     console.log("canle");
@@ -813,8 +816,8 @@ async function displayRequests() {
         const a = document.createElement("a");
         a.href = "#";  
 
-        const h3 = document.createElement("h3");
-        h3.textContent = request.name + " asked to join "+ request.projectTitle;  
+        
+         
         a.appendChild(h3);
         div.appendChild(btn1);
         div.appendChild(btn2);

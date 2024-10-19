@@ -27,7 +27,7 @@ function getQueryParam(param) {
 }
 const courseId = getQueryParam('id');
 console.log(courseId);
-//"IBvSyKrSIWgyX9EHSlyw"
+
 async function retrieve() {
     const docRef = db.collection("courses").doc(courseId);
 
@@ -51,7 +51,7 @@ window.onload = retrieve;
 
 bankakBtn.onclick = function (){
     const userId = authen.currentUser.uid;
-    collecTitle .innerText = "Bankak";
+    collecTitle .innerText = "Bankak/Vodafone/Fawry";
     cont.innerHTML = '';
 
     const containerDiv = document.createElement("div");
@@ -100,7 +100,19 @@ bankakBtn.onclick = function (){
 
     const a = document.createElement("a");
     a.innerText = "Purchas";
+
     a.addEventListener('click', function (){
+        let userName = '';
+        db.collection("users").doc(userId).get().then((doc) => {
+            if (doc.exists) {
+              const userData = doc.data();
+              userName = userData.fullname;
+            }
+        }).then(() => {
+            console.log("Project added successfully!");
+          }).catch((error) => {
+            console.error("Error updating document: ", error);
+          });
         //purchas and make joinCourse request
         const file = input.files[0];
         uploadFile(file).then((downloadURL) => {
@@ -109,6 +121,7 @@ bankakBtn.onclick = function (){
                 type: "Join Course",
                 courseId: courseId,
                 userId: userId,
+                name: userName,
                 courseTitle: courseTitle,
                 prove: downloadURL,
                 tag: "course"

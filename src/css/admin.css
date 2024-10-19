@@ -315,6 +315,9 @@ background-color:rgb(211, 211, 211);
     font-weight: 500;
     width: 50%;
 }
+.order-info span{
+    color: rgb(5, 148, 0);
+}
 .purchas-image{
     width: 50%;
     display: flex;

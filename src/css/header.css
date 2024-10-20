@@ -49,10 +49,10 @@ body{
     line-height: 30px;
 }
 .auth_btn_container .sign_up{
-    padding:0px 8px;
+    padding:5px 8px;
     background-color: #0066ff;
     color: white;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 .auth_btn_container .sign_up:hover{
     background-color: #0457d4;
@@ -60,6 +60,8 @@ body{
 
 .auth_btn_container .sign_in{
     border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
     color: black;
     background-color: white;
 }
@@ -230,4 +232,11 @@ background: rgba(255, 255, 255, 0.24); /* Semi-transparent white background */
 }
 .scrolled .auth_btn_container{
     justify-content: center;
+}
+
+#profile-a{
+    display: none;
+}
+#logoutBtn{
+    display: none;
 }

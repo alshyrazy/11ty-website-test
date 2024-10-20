@@ -13,6 +13,10 @@ const firebaseConfig = firebase.initializeApp({
 
 authen.onAuthStateChanged((user) => {
     if (user) {
+      document.getElementById("signin-btn").style.display = "none";
+      document.getElementById("signup-btn").style.display = "none";
+      document.getElementById("profile-a").style.display = "block";
+      document.getElementById("logoutBtn").style.display = "block";
       const docRef = db.collection("users").doc(user.uid);
       docRef.get().then(doc => {
         const userData = doc.data();

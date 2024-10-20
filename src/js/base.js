@@ -14,6 +14,10 @@ const db = firebaseConfig.firestore();
 
 authen.onAuthStateChanged((user) => {
     if(user){
+      document.getElementById("signin-btn").style.display = "none";
+      document.getElementById("signup-btn").style.display = "none";
+      document.getElementById("profile-a").style.display = "block";
+      document.getElementById("logoutBtn").style.display = "block";
       const userId = user.uid;
       const profileImage = document.getElementById("profile-image");
       db.collection('users').doc(userId).get().then((doc) => {

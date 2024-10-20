@@ -74,6 +74,10 @@ window.onclick = function(event){
  
 authen.onAuthStateChanged((user) => {
     if (user) {
+      document.getElementById("signin-btn").style.display = "none";
+      document.getElementById("signup-btn").style.display = "none";
+      document.getElementById("profile-a").style.display = "block";
+      document.getElementById("logoutBtn").style.display = "block";
       ID = user.uid;
       displayProjects(ID);
       displayCourses(ID);

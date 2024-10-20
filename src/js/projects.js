@@ -26,8 +26,10 @@ authen.onAuthStateChanged((user) => {
         const applyButtons = document.querySelectorAll('.applyBtn');
         // Loop through the buttons and change text based on project status
         applyButtons.forEach(button => {
+          
         const projectCard = button.closest('.project-card');
         const projectId = projectCard.dataset.projectId;
+
         if (userAcceptedProjects.includes(projectId)) {
           const project = projectsMap[projectId];
           if(project.status === "allow"){

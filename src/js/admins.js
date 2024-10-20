@@ -8,6 +8,7 @@ const firebaseConfig = firebase.initializeApp({
 });
 const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
+const storage = firebaseConfig.storage();
 
 let currentCancleClickListener = null;
 let currentDoneClickListener = null;
@@ -634,7 +635,7 @@ async function displayEvents() {
             addEventMenu.style.display = "block";
             document.getElementById("event-title").value = event.title;
             document.getElementById("event-date").value = event.date      
-            document.getElementById("event-description").value = event.description;
+            //document.getElementById("event-description").value = event.description;
                      
             if(eventCancleHaveListener){
                 addEventCancle.removeEventListener('click', currentEventCancleClickListener);
@@ -706,26 +707,27 @@ async function displayEvents() {
     }
 }
 async function addEvent() {
-    
-    await db.collection("events").add({
-        title: document.getElementById("event-title").value,
-        date: document.getElementById("event-date").value,           
-        description: document.getElementById("event-description").value
-    })
-    .then((docRef) => {
-        console.log("Project added with ID: ", docRef.id);
+    const input = document.getElementById("image-input");
+    const file = input.files[0];
+
+    await uploadFile(file).then((downloadURL) => {
+        console.log('File uploaded! Download URL:', downloadURL);
+            db.collection("events").add({
+            title: document.getElementById("event-title").value,
+            date: document.getElementById("event-date").value,           
+            imagePath: downloadURL
+        });
         addProjectMenu.style.display = "none";
-    })
-    .catch((error) => {
-        console.error("Error adding project: ", error);
+    }).catch((error) => {
+        console.error(error);
     });
+  
 }
 async function updateEvent(eventId){
 
     await db.collection("events").doc(eventId).update({
         title: document.getElementById("event-title").value,
         date: document.getElementById("event-date").value,           
-        description: document.getElementById("event-description").value
     })
     .then((docRef) => {
         console.log("Project updtaed with ID: ",eventId);
@@ -1061,6 +1063,27 @@ function downloadImageFromURL(imageURL) {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+}
+function uploadFile(file) {
+    return new Promise((resolve, reject) => {
+
+        if (!file) {
+            reject("No file selected!");
+            return;
+        }
+
+        const storageRef = storage.ref();
+        const fileRef = storageRef.child(`eventImages/${file.name}`);
+
+        fileRef.put(file).then(() => {
+            return fileRef.getDownloadURL();
+        }).then((downloadURL) => {
+            alert('Upload completed successfully!');
+            resolve(downloadURL);  // Return the download URL as the resolved value
+        }).catch((error) => {
+            reject('Failed to upload the file: ' + error);
+        });
+    });
 }
 
 

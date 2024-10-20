@@ -55,19 +55,21 @@ function signUp() {
   .then((userCredential) => {
    const user = userCredential.user;
   return db.collection("users").doc(user.uid).set({
-
+    blocked: false,
     username: userName.value,
     fullname: fullname.value,
     specialize: specialize.value,
     birth: birthDate.value,
     address: address.value,
     email: email.value,
+    profilePicture: "https://firebasestorage.googleapis.com/v0/b/static-site-firebase.appspot.com/o/profile%20images%2Fuser.png?alt=media&token=8bb78a73-769c-4197-9a2d-0fb0082acb0c",
     password: password.value,
     uid: user.uid,
     country: country.value,
-    Projects: []
-        }, {merge: true});
-        })
+    Projects: {},
+    Courses: {}
+    }, {merge: true});
+    })
       .then(() => {
        console.log('User signed up and information added to Firestore');
        window.location.href = '/login/';

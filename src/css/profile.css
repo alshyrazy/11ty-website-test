@@ -59,12 +59,12 @@ flex-direction: row;
     align-items: center;
 }
 .personal-info-image img{
-    width: 100px;
-   border-radius: 50%;
+   width: 90px;
+   border-radius: 10px; 
 }
 #user-image{
-    background-color: #161616e8;
-    
+    background-color: #918fac;
+    border: 1px rgb(255, 255, 255) double;
 }
 .personal-info-details{
 

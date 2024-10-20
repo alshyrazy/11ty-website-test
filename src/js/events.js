@@ -9,7 +9,22 @@ const firebaseConfig = firebase.initializeApp({
 const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
 
-async function displayEvents() {
+
+authen.onAuthStateChanged((user) => {
+  if (user) {
+    const docRef = db.collection("users").doc(user.uid);
+    docRef.get().then(doc => {
+      const userData = doc.data();
+
+      const projectsMap = userData.Projects || {};
+      const userAcceptedProjects = Object.keys(projectsMap);
+
+      const profileImage = document.getElementById("profile-image");
+      profileImage.src = userData.profilePicture;
+    })}
+});
+
+/*async function displayEvents() {
     try {
 
       const querySnapshot = await db.collection("events").get();
@@ -52,6 +67,36 @@ async function displayEvents() {
     } catch (error) {
       console.error("Error retrieving projects: ", error);
     }
+}*/
+
+async function displayEvents() {
+  try {
+
+    const querySnapshot = await db.collection("events").get();
+    
+    const eventsList = document.getElementById("events-list");
+
+    eventsList.innerHTML = '';
+
+    querySnapshot.forEach((doc) => {
+
+      const event = doc.data();
+      
+      const li = document.createElement("li");
+      const snippetDiv = document.createElement("div");
+      snippetDiv.classList.add("event-snippet");
+      const img = document.createElement("img");
+      img.classList.add("event-image");
+      img.src = event.imagePath;
+     
+      snippetDiv.appendChild(img);
+      li.appendChild(snippetDiv);
+      eventsList.appendChild(li);
+    });
+    
+  } catch (error) {
+    console.error("Error retrieving projects: ", error);
+  }
 }
 
 window.onload = displayEvents;
@@ -102,8 +147,6 @@ function searchAcrossCollections(query) {
       });
     });*/
 }
-
-// Function to handle displaying search results
 function displaySearchResult(type, data) {
   const resultDiv = document.getElementById("searchResults");
 
@@ -134,8 +177,6 @@ function displaySearchResult(type, data) {
   // Append to the result div
   resultDiv.appendChild(a);
 }
-
-// Event listener for search input
 document.getElementById("searchInput").addEventListener("input", (event) => {
   const searchQuery = event.target.value;
   const resultDiv = document.getElementById("searchResults");

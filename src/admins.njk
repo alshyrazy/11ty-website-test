@@ -206,8 +206,10 @@
                     <input type="date" id="event-date" placeholder="Date" required>
                 </div>
                 <div class="add-project-description">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="event-description"></textarea>
+                    <label for="description">Image</label>
+                    <input type="file" name="image" id="image-input">
+                   <!-- <textarea name="description" id="event-description"></textarea>-->
+                    
                 </div>
             </div>
             
@@ -278,6 +280,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13/firebase-storage-compat.js"></script>
     <script src="/js/admins.js"></script>
 </body>
 

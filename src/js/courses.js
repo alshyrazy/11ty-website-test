@@ -12,6 +12,20 @@ const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
 
 
+authen.onAuthStateChanged((user) => {
+  if (user) {
+    const docRef = db.collection("users").doc(user.uid);
+    docRef.get().then(doc => {
+      const userData = doc.data();
+
+      const projectsMap = userData.Projects || {};
+      const userAcceptedProjects = Object.keys(projectsMap);
+
+      const profileImage = document.getElementById("profile-image");
+      profileImage.src = userData.profilePicture;
+    })}
+});
+
 //Retriev all courses and display them
 async function displayCourses() {
     try {

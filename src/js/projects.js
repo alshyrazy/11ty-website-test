@@ -280,7 +280,7 @@ function displaySearchResult(type, data) {
   const p = document.createElement("p");
   const strong = document.createElement("strong");
   const span = document.createElement("span");
-
+  span.style.color = "blue";
   // Set content
   strong.innerText = type + " ";
   span.innerText = data.title;

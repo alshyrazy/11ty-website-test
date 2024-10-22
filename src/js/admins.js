@@ -51,6 +51,22 @@ const addEventDone = document.getElementById("add-event-done");
 const addEventBtn = document.getElementById("add-event-btn");
 const addResearchBtn = document.getElementById("add-research-btn");
 
+// Check if the user is logged in
+authen.onAuthStateChanged((user) => {
+    if (!user) {
+      // If no user is logged in, redirect to the auth page or show a message
+      window.location.href = "/auth";  // Redirect to auth page
+      // Optionally display a message
+      // document.body.innerHTML = "You need to log in to access the admin page.";
+    }
+});
+authen.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
+  // Existing and future Auth states will now persist only for the duration of the current session
+  console.log("Session persistence set.");
+}).catch((error) => {
+  console.error("Error setting persistence: ", error);
+});
+
 
 //VIEW BUTTONS
 projectBtn.onclick = function(){

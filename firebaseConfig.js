@@ -8,7 +8,7 @@ const password = document.getElementById('password');
 const country = document.getElementById('country');
 
 const firebaseConfig = firebase.initializeApp({
-  apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
+  apiKey: "{{ firebase.apiKey }}",
   authDomain: "static-site-firebase.firebaseapp.com",
   projectId: "static-site-firebase",
   storageBucket: "static-site-firebase.appspot.com",

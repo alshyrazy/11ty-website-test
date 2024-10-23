@@ -138,6 +138,8 @@ async function displayCourses() {
 
 window.onload = displayCourses;
 
+//console.log(import.meta.env);
+//document.getElementById("just").innerText= import.meta.env.VITE_FIREBASE_API_KEY;
 //Add the course in the Courses map
 async function enroll(courseId){
   const docRef = db.collection("users").doc(authen.currentUser.uid);

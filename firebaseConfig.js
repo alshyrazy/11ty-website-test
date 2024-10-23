@@ -8,12 +8,12 @@ const password = document.getElementById('password');
 const country = document.getElementById('country');
 
 const firebaseConfig = firebase.initializeApp({
-  apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
-  authDomain: "static-site-firebase.firebaseapp.com",
-  projectId: "static-site-firebase",
-  storageBucket: "static-site-firebase.appspot.com",
-  messagingSenderId: "94422243821",
-  appId: "1:94422243821:web:a274bee2c61bcd6bd6afe4"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 });
 
 const authen = firebaseConfig.auth();
@@ -78,3 +78,9 @@ function signUp() {
       console.error('Error during sign-up:', error.code, error.message);
       });
 }
+//document.getElementById('submit').addEventListener('click', signIn);
+window.signIn = signIn;
+console.log(import.meta.env.VITE_FIREBASE_API_KEY);
+//const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
+
+//document.getElementById("test-env").innerText = apiKey

@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy && vite build",
+    "dev": "concurrently \"eleventy --watch\" \"vite\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "concurrently": "^9.0.1",
+    "vite": "^5.4.10"
   },
   "dependencies": {
     "firebase": "^10.13.0"

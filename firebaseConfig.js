@@ -78,9 +78,9 @@ function signUp() {
       console.error('Error during sign-up:', error.code, error.message);
       });
 }
-//document.getElementById('submit').addEventListener('click', signIn);
-window.signIn = signIn;
-console.log(import.meta.env.VITE_FIREBASE_API_KEY);
+document.getElementById('submit').addEventListener('click', signIn);
+//window.signIn = signIn;
+//console.log(import.meta.env.VITE_FIREBASE_API_KEY);
 //const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
 
 //document.getElementById("test-env").innerText = apiKey

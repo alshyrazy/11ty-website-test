@@ -6,7 +6,7 @@ public
 
 
 # secrets and errors
-.env
+
 .log
 
 # macOS related files

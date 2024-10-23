@@ -8,7 +8,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/Icons');
     eleventyConfig.addPassthroughCopy('./src/js');
     eleventyConfig.addPassthroughCopy('./firebaseConfig.js');
-    eleventyConfig.addPassthroughCopy('.env');
+    eleventyConfig.addPassthroughCopy('./.env');
 
     
     eleventyConfig.addFilter("postDate", (dateObj) => {

@@ -9,13 +9,14 @@ module.exports = function(eleventyConfig) {
         messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
         appId: process.env.FIREBASE_APP_ID
       });
-      
+
     eleventyConfig.addPassthroughCopy('./src/css');
     eleventyConfig.addPassthroughCopy('./src/assets');
     eleventyConfig.addPassthroughCopy('./src/admin');
     eleventyConfig.addPassthroughCopy('./src/Icons');
     eleventyConfig.addPassthroughCopy('./src/js');
     eleventyConfig.addPassthroughCopy('./firebaseConfig.js');
+    eleventyConfig.addPassthroughCopy('.env');
 
     
     eleventyConfig.addFilter("postDate", (dateObj) => {

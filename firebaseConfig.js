@@ -8,7 +8,7 @@ const password = document.getElementById('password');
 const country = document.getElementById('country');
 
 const firebaseConfig = firebase.initializeApp({
-  apiKey: "{{ firebase.apiKey }}",
+  apiKey: "AIzaSyC1tG_Sgpd4QUJ2jBGvyk3akBo8baRBBek",
   authDomain: "static-site-firebase.firebaseapp.com",
   projectId: "static-site-firebase",
   storageBucket: "static-site-firebase.appspot.com",
@@ -78,4 +78,6 @@ function signUp() {
       console.error('Error during sign-up:', error.code, error.message);
       });
 }
-     
+
+const key = process.env.TEST_KEY;
+document.getElementById("test-env").innerText = key

@@ -78,6 +78,3 @@ function signUp() {
       console.error('Error during sign-up:', error.code, error.message);
       });
 }
-
-const key = process.env.TEST_KEY;
-document.getElementById("test-env").innerText = key

@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/css/login.css">
-<title>Login {process.env.TEST_KEY}</title>
+<title>Login</title>
 
 </head>
 
 <body>
 <div class="container">
-    <h2 id="test-env">Login</h2>
+    <h2 id="test-env">{{process.env.FIREBASE_API_KEY}}</h2>
 
         <div class="form-group">
            <div class="label"><label>Email:</label></div>

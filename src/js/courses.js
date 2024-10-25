@@ -12,7 +12,7 @@ const authen = firebaseConfig.auth();
 const db = firebaseConfig.firestore();
 
 
-authen.onAuthStateChanged((user) => {
+ authen.onAuthStateChanged((user) => {
   if (user) {
       document.getElementById("signin-btn").style.display = "none";
       document.getElementById("signup-btn").style.display = "none";
@@ -22,11 +22,51 @@ authen.onAuthStateChanged((user) => {
     docRef.get().then(doc => {
       const userData = doc.data();
 
-      const projectsMap = userData.Projects || {};
-      const userAcceptedProjects = Object.keys(projectsMap);
-
       const profileImage = document.getElementById("profile-image");
       profileImage.src = userData.profilePicture;
+      
+     /* const enrollButtons = document.querySelectorAll('.enrollBtn');
+        // Loop through the buttons and change text based on project status
+        enrollButtons.forEach(button => {
+          const querySnapshot = db.collection("courses").get();
+
+          querySnapshot.forEach((doc) => {
+            const course = doc.data();
+            const membersMap = course.members || {};
+            if (membersMap.hasOwnProperty(user.uid)){
+              button.style.backgroundColor = "rgb(0, 163, 228)";
+              button.innerText = "Open"; 
+              button.addEventListener('click', () =>{
+              window.location.href = course.link;
+              //console.log(course.link)
+            })
+          }
+            else{
+              button.innerText = "Buy"
+        a.addEventListener('click', function(){
+          enroll(doc.id).then(() => {
+            // Only redirect once the enroll() function has completed
+            window.location.href = `/payment?id=${doc.id}`;
+        }).catch((error) => {
+            console.error('Enrollment failed:', error);
+        });
+          //window.location.href = `/payment?id=${doc.id}`;
+           
+        });
+        
+              button.addEventListener('click', async function() {
+              try {
+               enroll(doc.id);  // Wait for enroll() to complete
+              //console.log("done");
+              window.location.href = `/payment?id=${doc.id}`;  // Redirect after it's done
+              } catch (error) {
+              console.error('Enrollment failed:', error);
+           }
+          });
+          }
+          });
+        
+        });*/
     })}
 });
 
@@ -80,7 +120,8 @@ async function displayCourses() {
         countSpan.innerText = course.lectureCount;
 
         const a = document.createElement("a");
-
+        a.classList.add("enrollBtn");
+       
          if (membersMap.hasOwnProperty(authen.currentUser.uid)){
             a.style.backgroundColor = "rgb(0, 163, 228)";
             a.innerText = "Open"; 

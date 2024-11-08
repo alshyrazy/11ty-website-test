@@ -50,7 +50,7 @@
 /* === description === */
 .project-snippet .description{
     grid-column: 1/2;
-    overflow: hidden;
+    overflow: auto;
 }
 .project-snippet .description p{
     font-family: Arial, Helvetica, sans-serif;

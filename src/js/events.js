@@ -76,7 +76,7 @@ authen.onAuthStateChanged((user) => {
 async function displayEvents() {
   try {
 
-    const querySnapshot = await db.collection("events").get();
+    const querySnapshot = await db.collection("events").orderBy("timestamp", "desc").get();
     
     const eventsList = document.getElementById("events-list");
 

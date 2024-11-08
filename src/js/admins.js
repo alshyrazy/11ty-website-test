@@ -631,7 +631,7 @@ async function deleteCourse(courseId){
 async function displayEvents() {
     try {
 
-      const querySnapshot = await db.collection("events").get();
+      const querySnapshot = await db.collection("events").orderBy("timestamp", "desc").get();
       
       const projectList = document.getElementById("project-list");
 
@@ -731,7 +731,8 @@ async function addEvent() {
             db.collection("events").add({
             title: document.getElementById("event-title").value,
             date: document.getElementById("event-date").value,           
-            imagePath: downloadURL
+            imagePath: downloadURL,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
         });
         addProjectMenu.style.display = "none";
     }).catch((error) => {

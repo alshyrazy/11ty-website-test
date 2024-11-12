@@ -48,7 +48,30 @@
         min-height: 100vh; /* Full height of the viewport */
         width: 100%;
    
-}
+      }
+      .feedbackBtn{
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        padding: 0px 10px;
+        position: fixed;
+        top: 30%;
+        left: 90%;
+        border: 0px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        background-color: rgb(217 73 8 / 80%);
+        font-size: 14px;
+        color: rgb(255, 255, 255);
+      }
+      .feedbackBtn a{
+        color: white;
+        text-decoration: none;
+      }
     </style>
     
 </head>
@@ -95,7 +118,11 @@
 
   </div>
     {{ content | safe }}
-   
+  
+   <div class="feedbackBtn" id="feedbackBtn">
+    <a href="/feedback/">Feedback</a>
+    <span id="timer"></span>
+   </div>
     {% include 'footer.njk' %}
 </div>
       <script>

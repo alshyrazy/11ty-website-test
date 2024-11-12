@@ -122,3 +122,37 @@ document.getElementById("searchInput").addEventListener("input", (event) => {
   }
 });
 
+
+//FEEDBACK COUNTER
+let targetDate = localStorage.getItem("countdownTargetDate");
+
+if (!targetDate) {
+    // If no target date is set, create a new one for 15 days from now
+    targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 15);
+    localStorage.setItem("countdownTargetDate", targetDate); // Save target date in local storage
+} else {
+    // Parse the stored date string back into a Date object
+    targetDate = new Date(targetDate);
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const timeRemaining = targetDate - now; // Time difference in milliseconds
+
+  if(timeRemaining > 0){
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }else {
+    document.getElementById("timer").innerHTML = "Countdown Finished!";
+    clearInterval(countdownInterval); // Stop updating when countdown ends
+  }
+}
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+//updateCountdown();
+

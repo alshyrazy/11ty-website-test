@@ -63,7 +63,7 @@ function signUp() {
     address: address.value,
     email: email.value,
     profilePicture: "https://firebasestorage.googleapis.com/v0/b/static-site-firebase.appspot.com/o/profile%20images%2Fuser.png?alt=media&token=8bb78a73-769c-4197-9a2d-0fb0082acb0c",
-    password: password.value,
+    
     uid: user.uid,
     country: country.value,
     Projects: {},
@@ -78,9 +78,31 @@ function signUp() {
       console.error('Error during sign-up:', error.code, error.message);
       });
 }
+
+//RESET USER PASSWORD
+/*function resetPassword(email) {
+    firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+            // Notify the user that the reset email has been sent
+            alert("Password reset email sent! Check your inbox.");
+        })
+        .catch((error) => {
+            // Handle errors here
+            if (error.code === 'auth/invalid-email') {
+                alert("Invalid email address.");
+            } else if (error.code === 'auth/user-not-found') {
+                alert("No user found with this email.");
+            } else {
+                alert("Error: " + error.message);
+            }
+        });
+}
+
+// Example usage: Calling the resetPassword function with user email
+const email = "user@example.com"; // Replace with the user's email input
+resetPassword(email);
+*/
+
 document.getElementById('submit').addEventListener('click', signIn);
 //window.signIn = signIn;
-//console.log(import.meta.env.VITE_FIREBASE_API_KEY);
-//const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
 
-//document.getElementById("test-env").innerText = apiKey

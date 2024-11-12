@@ -24,8 +24,6 @@ body {
 }
 .form-group {
     margin-bottom: 30px;
-    
-   
 }
 .form-group label {
     display: block;
@@ -38,6 +36,9 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+.form-group input:focus{
+    outline: none;
 }
 .form-group button {
     width: 80%;
@@ -55,12 +56,11 @@ body {
 
 .forgot_password{
     text-align: center;
-margin: auto;
+    margin: auto;
 }
 .label{
 text-align: left;
-margin-left: 20px;
-}
+margin-left: 20px;}
 
 .have-account{
     
@@ -71,4 +71,66 @@ margin-left: 20px;
 }
 .have-account a{
     text-decoration: none;
+}
+
+/*MOBILE STYLE*/
+@media (max-width: 340px) {
+    body {
+        font-size: 12px;
+    }
+    .container {
+        background-color: #fff;
+        padding: 5%;
+        border-radius: 8px;
+        box-shadow: 0 0 26px #6b6ec646;
+        width: 70%;
+        height: fit-content;
+        text-align: center; 
+    }
+    .container h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .form-group {
+        margin-bottom: 10%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 5%;
+    }
+    .form-group input {
+        width: 90%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form-group button {
+        width: 60%;
+        padding: 8px;
+        margin: auto 20%;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .label{
+        text-align: left;
+        margin-left: 5px;
+    }
+    .have-account{
+    
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-weight: 400;
+    }
+    .have-account a{
+        text-decoration: none;
+    }
 }

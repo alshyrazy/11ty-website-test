@@ -4,19 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/feedback.css">
+    <link rel="stylesheet" href="/css/header.css">
     <title>Feedback</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
 </head>
 <body>
-    <header style="height: 50px;"></header>
-    <div class="main-container">
-        <div class="form">
-            <div class="content">
-                <input name="feedback" id="feedbackContent">
+    <header>
+        <div class="header_container">
+            <div class="logo_container">
+                <a href="/home/"><h2 class="logo"><span style="color: #3a86ff;">Res</span><span>Wab</span></h2></a>
+            </div>
+           
+            <div class="nav_container">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" fill="none">
+                        <g id="Menu / Menu_Duo_LG">
+                        <path id="Vector" d="M3 15H21M3 9H21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                </div>
+                    <!--<nav class="nav_bar">
+                        <ul>
+                           <li><a href="###">Researchers</a></li> 
+                           <li><a href="/courses/">Courses</a></li> 
+                           <li><a href="###">Meets</a></li>
+                           <li><a href="/projects/">Projects</a></li> 
+                           <li><a href="###">Events</a></li> 
+                           <li><a href="###">About us</a></li>
+                        </ul>
+                    </nav>-->
+            </div>
+           
+            <div class="auth_btn_container">
+               <!-- <a href="/login" class="auth_btn sign_in">Sign in</a>
+                <a href="reg.html" class="auth_btn sign_up">Sign up</a>-->
+                <a href="/profile/"><img src="/Icons/facebook.png" alt="profile" class="profile-image"></a>
+                <img src="/Icons/logout.png" alt="profile" class="logout-image" id="logoutBtn" onclick="signOutUser()">
+            </div>
 
+            <div class="search_bar_container">
+                <div class="icon_container"><img src="/Icons/search.png" alt="menu" class="ic_search icon"></div>
+                <input type="search" class="search_bar" placeholder="Search with courses, researcher or research...">
+                <div class="icon_container"><img src="/Icons/menu.png" alt="menu" class="ic_menu icon"></div>
             </div>
         </div>
-        
-    </div>
+    </header>
+
 
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-body{
-    height: 2000px;
-}
+
 #header{
     position: static;
 }
@@ -173,7 +171,53 @@ body{
     filter: invert(31%) sepia(43%) saturate(5165%) hue-rotate(224deg) brightness(100%) contrast(88%);
 }
 
+@media (max-width: 480px) {
+    .header_container{
+        width: 100%;
+        height: 20%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(2, 50%);
+        transition: height 0.3s ease, grid-template-rows 0.5s ease;
+        background-color: white;
+        z-index: 1000;
+    }
+    .logo_container{
+        
+        grid-column: 1/2;
+        display: flex;
+        align-items: center;  
+    }
+    .logo_container a{
+        text-decoration: none;
+    }
+    .nav_container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        grid-column: 2/3;
+    }
+    .auth_btn_container{
+       
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        grid-column: 3/-1; 
+    }
+    .search_bar_container{
+        display: flex;
+        flex-direction: row;
+        border-top: rgba(128, 128, 128, 0.404) 1px solid ;
+        border-bottom: rgba(128, 128, 128, 0.404) 1px solid ;
 
+        grid-row: 2/-1;
+        grid-column: 1/-1;
+    }
+}
 
 /* ==== Scrolled ==== */
 

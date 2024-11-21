@@ -7,6 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 .container {
     background-color: #fff;
@@ -16,6 +17,8 @@ body {
     width: 340px;
     height: fit-content;
     text-align: center;
+
+    
     
 }
 .container h2 {
@@ -33,6 +36,7 @@ body {
 }
 .form-group input {
     width: 80%;
+    font-size: 16px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -49,6 +53,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
 }
 .form-group button:hover {
     background-color: #0056b3;
@@ -62,11 +67,7 @@ body {
 text-align: left;
 margin-left: 20px;}
 
-.have-account{
-    
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.have-account{ 
     font-weight: 500;
 }
 .have-account a{
@@ -74,13 +75,19 @@ margin-left: 20px;}
 }
 
 /*MOBILE STYLE*/
-@media (max-width: 340px) {
+@media (max-width: 480px) {
     body {
-        font-size: 12px;
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
     }
     .container {
         background-color: #fff;
-        padding: 5%;
+        padding: 10%;
+        margin-top: 25%;
         border-radius: 8px;
         box-shadow: 0 0 26px #6b6ec646;
         width: 70%;
@@ -89,25 +96,25 @@ margin-left: 20px;}
     }
     .container h2 {
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 10%;
     }
     .form-group {
         margin-bottom: 10%;
         display: flex;
-        flex-direction: column;
-        
+        flex-direction: column; 
     }
     .form-group label {
         display: block;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
         margin-bottom: 5%;
     }
     .form-group input {
         width: 90%;
-        padding: 5px;
+        padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        
     }
     .form-group button {
         width: 60%;
@@ -128,7 +135,7 @@ margin-left: 20px;}
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 
         "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-weight: 400;
+        font-weight: 500;
     }
     .have-account a{
         text-decoration: none;

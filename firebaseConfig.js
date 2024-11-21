@@ -72,7 +72,7 @@ function signUp() {
     })
       .then(() => {
        console.log('User signed up and information added to Firestore');
-       window.location.href = '/login/';
+       window.location.href = '/';
       })
       .catch((error) => {
       console.error('Error during sign-up:', error.code, error.message);
